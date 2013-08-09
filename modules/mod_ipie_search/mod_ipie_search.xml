@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension 	type="module" version="2.5"	client="site" method="upgrade">
+	<name>mod_ipie_search</name>
+	<author>Cristiano Cucco</author>
+	<creationDate>August 2013</creationDate>
+	<version>1.0.0</version>
+	<description>Form ricerca aziende</description>
+	<files>
+		<filename module="mod_ipie_search">mod_ipie_search.php</filename>
+	</files>
+
+</extension>

@@ -16,7 +16,6 @@
 /LICENSE.txt
 /index.php
 /htaccess.txt
-/modules/
 /nbproject
 
 administrator/*
@@ -30,3 +29,6 @@ administrator/components/com_falang/*
 components/*
 !components/com_ipie
 
+modules/*
+!modules/mod_ipie_search
+!modules/mod_ipie_sectors

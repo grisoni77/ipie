@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+            name="factor_id"
+            type="hidden"
+        />
+        
+        <field 
+            name="description" 
+            type="text"
+            default=""
+            label="Description"
+            required="true" 
+        />
+        
+        <!-- in origine era un radio -->
+        <field 
+            name="published" 
+            type="radio"
+            default="0"
+            label="Published"
+        >
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </field>
+        
+        
+    </fieldset>
+</form>

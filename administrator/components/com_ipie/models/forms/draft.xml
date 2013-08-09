@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_ipie/models/rules">
+    <fieldset name="Dettagli">
+        <field
+            name="draft_id"
+            type="hidden"
+        />
+        
+        <field
+            name="company_id"
+            type="hidden"
+        />
+        
+        <field 
+            name="name" 
+            type="text"
+            default=""
+            label="Nome"
+            description="Nome"
+            required="true"
+        />
+        
+        <field 
+            name="ragione_sociale" 
+            type="list"
+            default="spa"
+            label="Ragione Sociale"
+            description="Ragione Sociale"
+            required="true"
+        >
+            <option value="spa">Spa</option>
+            <option value="srl">Srl</option>
+            <option value="sas">Sas</option>
+            <option value="snc">Snc</option>
+        </field>
+        
+        <field 
+            name="piva" 
+            type="text"
+            default=""
+            label="Partita IVA"
+            description="Partita IVA"
+            required="true" 
+            maxlength="11"
+        />
+        
+        <field 
+            name="employees" 
+            type="text"
+            default=""
+            label="Numero di addetti"
+            description="Numero di addetti"
+            required="true" 
+        />
+        
+        <field 
+            name="year_foundation" 
+            type="text"
+            default=""
+            label="Anno di fondazione"
+            description="Anno di fondazione"
+            required="true" 
+            maxlength="4"
+        />
+        
+        <field 
+            name="logo" 
+            type="logo"
+            default=""
+            label="Logo"
+            description="Logo"
+            folder="draft"
+            validate="logo"
+        />
+        
+        <field 
+            name="current_logo" 
+            type="hidden"
+            default=""
+        />
+        
+    </fieldset>
+    
+    <fieldset name="Contatti">
+        
+        <field 
+            name="address" 
+            type="text"
+            default=""
+            label="Indirizzo"
+            description="Indirizzo"
+            required="true" 
+        />
+        
+        <field 
+            name="province_id" 
+            type="province"
+            default=""
+            label="Provincia"
+            description="Provincia"
+            required="true" 
+        />
+        
+        <field 
+            name="city_id" 
+            type="city"
+            default=""
+            label="Città"
+            description="Città"
+            required="true" 
+            provfld="province_id" 
+        />
+        
+        <field 
+            name="cap" 
+            type="text"
+            default=""
+            label="CAP"
+            description="CAP"
+            required="true" 
+        />
+
+        <field 
+            name="email" 
+            type="email"
+            default=""
+            label="E-mail"
+            description="E-mail"
+            required="true" 
+        />
+        
+        <field 
+            name="web" 
+            type="url"
+            default=""
+            label="Sito web"
+            description="Indirizzo Sito web"
+            required="false" 
+        />
+        
+    </fieldset>
+    
+    <fieldset name="Attività azienda">
+        
+        <field 
+            name="sectors"
+            type="sectors"
+            label="Settori"
+            description="Settori"
+        />
+        
+        <field 
+            name="area_eccellenza_it" 
+            type="textarea"
+            default=""
+            label="Area di eccellenza (in lingua italiana)"
+            description="Area di eccellenza in lingua italiana. Max 1500 caratteri"
+            required="true"
+            maxlength="1500"
+        />
+        
+        <field 
+            name="area_eccellenza_en" 
+            type="textarea"
+            default=""
+            label="Area di eccellenza (in lingua inglese)"
+            description="Area di eccellenza in lingua inglese. Max 1500 caratteri"
+            required="true"
+            maxlength="1500"
+        />
+        
+        <field 
+            name="collaborazioni" 
+            type="textarea"
+            default=""
+            label="Collaborazioni ricercate"
+            description="Collaborazioni ricercate. Max 500 caratteri"
+            required="false"
+            maxlength="500"
+        />
+        
+    </fieldset>
+    
+    
+</form>

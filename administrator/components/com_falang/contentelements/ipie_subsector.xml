@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<falang type="contentelement">
+	<name>IPie Sottosettori</name>
+	<author>Cristiano Cucco</author>
+	<version>1.7</version>
+	<description>Definizioni per Sottosettori</description>
+	<reference>
+		<table name="ipie_subsector">
+			<field type="referenceid" name="subsector_id" translate="0">ID</field>
+			<field type="titletext" name="name" length="50" maxlength="256" translate="1">Nome</field>
+		</table>
+	</reference>
+</falang>

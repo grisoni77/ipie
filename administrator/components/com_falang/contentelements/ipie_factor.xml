@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<falang type="contentelement">
+	<name>IPie Fattori</name>
+	<author>Cristiano Cucco</author>
+	<version>1.7</version>
+	<description>Definizioni per Fattori innovativi</description>
+	<reference>
+		<table name="ipie_factor">
+			<field type="referenceid" name="factor_id" translate="0">ID</field>
+			<field type="titletext" name="description" length="50" maxlength="256" translate="1">Descrizione</field>
+		</table>
+	</reference>
+</falang>

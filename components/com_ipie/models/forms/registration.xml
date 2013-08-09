@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_ipie/models/rules">
+    <fieldset>
+        <field
+            name="registration_id"
+            type="hidden"
+        />
+        
+        <field 
+            name="name" 
+            type="text"
+            default=""
+            label="Nome azienda"
+            required="true"
+        />
+        
+        <field 
+            name="piva" 
+            type="text"
+            default=""
+            label="Partita IVA"
+            description="Partita IVA"
+            required="true" 
+            maxlength="11"
+        />
+        
+        <field 
+            name="province_id" 
+            type="province"
+            default=""
+            label="Provincia"
+            description="Provincia"
+            required="true" 
+        />
+        
+        <field 
+            name="city_id" 
+            type="city"
+            default=""
+            label="Città"
+            description="Città"
+            required="true" 
+            provfld="province_id" 
+        />
+                
+        <field 
+            name="email" 
+            type="text"
+            default=""
+            label="E-mail"
+            required="true"
+            validate="email"
+            unique="true"
+            message="This mail is already used by another user"
+        />
+        
+        <field 
+            name="username" 
+            type="text"
+            default=""
+            label="Nome utente"
+            required="true"
+            validate="username"
+            message="Choose another user name. This one is already in use"
+        />
+        
+        <field 
+            name="password" 
+            type="password"
+            default=""
+            label="Password"
+            required="true"
+        />
+        
+        <field 
+            name="password2" 
+            type="password"
+            default=""
+            label="Ripeti Password"
+            required="true"
+            validate="password2"
+            message="Entered passwords do not match"
+        />
+        
+        <field
+            name="tos"
+            type="tos"
+            default=""
+            label="PLG_USER_PROFILE_FIELD_TOS_LABEL"
+            description="PLG_USER_PROFILE_FIELD_TOS_DESC"
+            validate="tos"
+            message="You must accept terms and conditions"
+        >
+            <option value="1">PLG_USER_PROFILE_OPTION_AGREE</option>
+            <option value="">JNO</option>
+        </field>
+        
+    </fieldset>
+</form>

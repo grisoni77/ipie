@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+ 
+    <name>IPie</name>
+    <!-- The following elements are optional and free of formatting constraints -->
+    <creationDate>August 2013</creationDate>
+    <author>Cristiano Cucco</author>
+    <authorEmail>cristiano.cucco@gmail.com</authorEmail>
+    <!--  The version string is recorded in the components table -->
+    <version>1.0.0</version>
+    <!-- The description is optional and defaults to the name -->
+    <description>Innovative Piemonte</description>
+ 
+    <!-- Runs on update; New in 2.5 -->
+    <!--
+    <update> 
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
+    -->
+    
+ 
+    <administration>
+        <!-- Administration Menu Section -->
+        <menu>Innovative Piemonte</menu>
+        <!-- Administration Main File Copy Section -->
+        <!-- Note the folder attribute: This attribute describes the folder
+        to copy FROM in the package to install therefore files copied
+        in this section are copied from /admin/ in the package -->
+        <files folder="admin">
+            <!-- Admin Main File Copy Section -->
+            <filename>ipie.php</filename>
+        </files>
+    </administration>
+    
+ 
+</extension>

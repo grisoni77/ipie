@@ -1,0 +1,1 @@
+Registrazione completata con successo!

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<falang type="contentelement">
+	<name>IPie Aziende</name>
+	<author>Cristiano Cucco</author>
+	<version>1.7</version>
+	<description>Definizioni per Aziende</description>
+	<reference>
+		<table name="ipie_company">
+			<field type="referenceid" name="company_id" translate="0">ID</field>
+			<field type="titletext" name="name" length="50" maxlength="128" translate="1">Nome</field>
+		</table>
+	</reference>
+</falang>

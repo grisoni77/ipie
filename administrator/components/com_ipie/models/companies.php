@@ -104,6 +104,10 @@ class IPieModelCompanies extends IPieModelList {
         $state = $this->getUserStateFromRequest($this->context . '.filter.province', 'filter_province', '', 'int');
         $this->setState('filter.province', $state);
 
+        //Filter (dropdown) state
+        $state = $this->getUserStateFromRequest($this->context . '.filter.sector', 'filter_sector', '', 'int');
+        $this->setState('filter.sector', $state);
+
         //Takes care of states: list. limit / start / ordering / direction
         parent::populateState('c.name', 'asc');
     }

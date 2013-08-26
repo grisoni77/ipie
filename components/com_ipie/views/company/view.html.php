@@ -14,7 +14,7 @@ class IPieViewCompany extends JView
     // Overwriting JView display method
     function display($tpl = null)
     {
-        $this->item = $this->get('Item');
+        $this->item = $this->get('Data');
 
         // Display the view
         parent::display($tpl);

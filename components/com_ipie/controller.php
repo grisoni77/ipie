@@ -45,7 +45,17 @@ class IPieController extends JController
         switch ($view)
         {
             case 'draft':
-                return IPieHelperAuth::isDraftOwner();
+                $context = "com_ipie.edit.draft";
+                $draft_id = JRequest::getInt('id');
+                if (!empty($draft_id)) {
+                    $model = $this->getModel('Draft');
+                    $user = JFactory::getUser();
+                    return $model->isDraftOwner($draft_id, $user->id);
+                } else {
+                    // non il massimo...
+                    JFactory::getApplication()
+                            ->redirect(JRoute::_('index.php?option=com_ipie&task=draft.edit'));
+                }
                 break;
             
             default:

@@ -3,7 +3,9 @@
     <?php foreach ($list as $s) : 
             $link = JRoute::_('index.php?option=com_ipie&view=companies&filter_sector='.$s->sector_id);
     ?>
-    <li id="s<?php echo $s->sector_id ?>">
+    <li id="s<?php echo $s->sector_id ?>"
+        <?php if ($filter_sector == $s->sector_id ) : ?>class="active"<?php endif; ?>
+        >
         <a href="<?php echo $link ?>" title="" />
             <span><?php echo $s->name ?></span>
         </a>

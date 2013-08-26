@@ -30,7 +30,7 @@ class IPieModelDraft extends IPieModelAdmin
         if (empty($data))
         {
             $data = $this->getItem();
-            $data->sectors = $this->getSectors($data->draft_id);
+            $data->sectors = $this->getSubSectorsIds($data->draft_id);
             $data->current_logo = $data->logo;
         }
         return $data;
@@ -76,7 +76,7 @@ class IPieModelDraft extends IPieModelAdmin
         parent::save($item->getProperties());
         // load data to be store in company record
         $data = $item->getProperties();
-        $data['sectors'] = $this->getSectors($draft_id);
+        $data['sectors'] = $this->getSubSectorsIds($draft_id);
         // copia immagine da draft
         if (!file_exists($this->getLogoPath().$data['logo'])) {
             JFile::copy($this->getLogoDraftPath().$data['logo'], $this->getLogoPath().$data['logo']);
@@ -95,7 +95,7 @@ class IPieModelDraft extends IPieModelAdmin
         return parent::save($item->getProperties());
     }
     
-    protected function getSectors($draft_id)
+    protected function getSubSectorsIds($draft_id)
     {
         if (!empty($draft_id)) 
         {

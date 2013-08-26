@@ -3,6 +3,11 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+if (defined('IPIE_LOADER')) {
+    return;
+}
+define('IPIE_LOADER', 1);
+
 // Registering classes
 JLoader::register(PFX.'Helper',          JPATH_ADMINISTRATOR. '/components/'.CNL.'/helpers/base.php');
 JLoader::register(PFX.'HelperUi',        JPATH_ADMINISTRATOR. '/components/'.CNL.'/helpers/ui.php');

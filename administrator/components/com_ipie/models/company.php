@@ -33,8 +33,8 @@ class IPieModelCompany extends IPieModelAdmin
         if (empty($data))
         {
             $data = $this->getItem();
-            $data->sectors = $this->getSectors($data->company_id);
-            $data->factors = $this->getFactors($data->company_id);
+            $data->sectors = $this->getSubSectorsIds($data->company_id);
+            $data->factors = $this->getFactorsIds($data->company_id);
             $data->current_logo = $data->logo;
         }
         return $data;
@@ -100,7 +100,7 @@ class IPieModelCompany extends IPieModelAdmin
         $model->delete($draft_id);
     }
 
-    protected function getSectors($company_id)
+    protected function getSubSectorsIds($company_id)
     {
         if (!empty($company_id))
         {
@@ -119,7 +119,7 @@ class IPieModelCompany extends IPieModelAdmin
         }
     }
 
-    protected function getFactors($company_id)
+    protected function getFactorsIds($company_id)
     {
         if (!empty($company_id))
         {

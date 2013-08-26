@@ -2,7 +2,7 @@
 
 class IPieHelperAuth
 {
-    static function isDraftOwner()
+    static function __isDraftOwner()
     {
         return true;
     }

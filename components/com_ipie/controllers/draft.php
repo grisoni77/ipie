@@ -282,7 +282,7 @@ class IPieControllerDraft extends JControllerForm
     
     public function pending() 
     {
-        $draft_id = JRequest::getInt('draft_id');
+        $draft_id = JRequest::getInt('id');
         $model = $this->getModel('Draft');
         $view = $this->getView('draft', 'html');
         $view->assignRef('item', $model->getItem($draft_id));

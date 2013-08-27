@@ -1,7 +1,8 @@
 <?php if (count($list)) : ?>
 <ul>
     <?php foreach ($list as $s) : 
-            $link = JRoute::_('index.php?option=com_ipie&view=companies&filter_sector='.$s->sector_id);
+            $slug = JFilterOutput::stringURLUnicodeSlug($s->name);
+            $link = JRoute::_('index.php?option=com_ipie&view=companies&layout=sector&filter_sector='.$s->sector_id.':'.$slug);
     ?>
     <li id="s<?php echo $s->sector_id ?>"
         <?php if ($filter_sector == $s->sector_id ) : ?>class="active"<?php endif; ?>

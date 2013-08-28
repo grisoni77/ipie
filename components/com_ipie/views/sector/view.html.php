@@ -9,7 +9,7 @@ jimport('joomla.application.component.view');
 /**
  * Form View
  */
-class IPieViewCompanies extends JView
+class IPieViewSector extends JView
 {
 
     /**
@@ -30,6 +30,11 @@ class IPieViewCompanies extends JView
         $this->total = $total;
         $this->pagination = $pagination;
         
+        $filter_sector = $state->get('filter.sector');
+        if (!empty($filter_sector)) {
+            $this->sector = $this->get('Sector');
+        }
+
 
         // Display the template
         parent::display($tpl);

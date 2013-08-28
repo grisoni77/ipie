@@ -151,18 +151,6 @@ class IPieSiteModelCompanies extends JModelList
         $this->setState('list.direction', $value);
     }
     
-    
-    public function getSector($sector_id = null) 
-    {
-        if (!isset($sector_id)) {
-            $sector_id = $this->getState('filter.sector');
-        }
-        if (empty($sector_id)) {
-            JError::raiseError(400, 'Bad sector ID');
-        }
-        $table = $this->getTable('Sector', 'IPieTable');
-        $table->load($sector_id);
-        return $table->getProperties();
-    }
+
 
 }

@@ -58,6 +58,20 @@
             description="Numero di addetti"
             required="true" 
         />
+<!--        <field 
+            name="employees" 
+            type="list"
+            default=""
+            label="Classe di addetti"
+            description="Classe di addetti"
+            required="true" 
+        >
+            <option value="1-50">1-50</option>
+            <option value="51-100">50-100</option>
+            <option value="101-500">101-500</option>
+            <option value="501-1000">501-1000</option>
+            <option value="+1000">+1000</option>
+        </field>-->
         
         <field 
             name="year_foundation" 

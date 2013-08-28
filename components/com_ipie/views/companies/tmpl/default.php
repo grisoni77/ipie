@@ -28,7 +28,7 @@ $pathway->addItem(JText::_('Risultati ricerca'));
 </p>
 <?php foreach ($items as $item) : 
     $slug = JFilterOutput::stringURLUnicodeSlug($item->name);
-    $link = JRoute::_('index.php?option=com_ipie&view=company&id='.$item->company_id.':'.$slug);
+    $link = IPieHelperRoute::companyLink($item->company_id, $slug);
     //print_r($item);
 ?>
 <ul class="arancio">

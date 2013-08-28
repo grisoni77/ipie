@@ -76,7 +76,14 @@ class IPieModelCompany extends IPieModelAdmin
                 $this->deleteDraft($id);
                 // copia immagine per draft
                 if (!empty($data['logo'])) {
+                    if (!file_exists($this->getLogoDraftPath())) {
+                        JFolder::create($this->getLogoDraftPath());
+                    }
                     JFile::copy($this->getLogoPath() . $data['logo'], $this->getLogoDraftPath() . $data['logo']);
+                    if (!file_exists($this->getLogoDraftThumbPath())) {
+                        JFolder::create($this->getLogoDraftThumbPath());
+                    }
+                    JFile::copy($this->getLogoThumbPath() . $data['logo'], $this->getLogoDraftThumbPath() . $data['logo']);
                 }
                 // salva nuovo draft
                 $data['company_id'] = $id;
@@ -192,9 +199,19 @@ class IPieModelCompany extends IPieModelAdmin
         return JPATH_ROOT . DS . 'images' . DS . 'ipie' . DS . 'logo' . DS;
     }
 
+    public function getLogoThumbPath()
+    {
+        return JPATH_ROOT . DS . 'images' . DS . 'ipie' . DS . 'logo' . DS . 'thumb' . DS;
+    }
+
     public function getLogoDraftPath()
     {
         return JPATH_ROOT . DS . 'images' . DS . 'ipie' . DS . 'logo' . DS . 'draft' . DS;
+    }
+
+    public function getLogoDraftThumbPath()
+    {
+        return JPATH_ROOT . DS . 'images' . DS . 'ipie' . DS . 'logo' . DS . 'draft' . DS . 'thumb' . DS;
     }
 
     protected function copyLogo($data)
@@ -206,15 +223,20 @@ class IPieModelCompany extends IPieModelAdmin
         if (!empty($file['name']))
         {
             // generate unique filename
-            $filename = uniqid() . '_' . $file['name'];
+            $extension = end(explode('.', $file['name']));
+            $filename = uniqid() . '.' . $extension;
             $path = $this->getLogoPath();
             // copy file
             if (!JFile::upload($file['tmp_name'], $path . $filename)) {
                 throw new Exception('Errore in copia logo', 500);
             }
+            // crea miniatura
+            $this->createLogoThumbnail($filename);
             // cancella eventuale file precedente
             if (!empty($data['current_logo'])) {
                 JFile::delete($path . $data['current_logo']);
+                // delete miniatura
+                $this->deleteLogoThumbnail($data['current_logo']);
             }
         }
         else {
@@ -223,13 +245,43 @@ class IPieModelCompany extends IPieModelAdmin
         return $filename;
     }
 
-
-
     protected function deleteOldLogo($id)
     {
         $item = $this->getitem($id);
         if (!empty($item->logo)) {
             JFile::delete($this->getLogoPath() . $item->logo);
+            $this->deleteLogoThumbnail($item->logo);
+        }
+    }
+
+    public function createLogoThumbnail($filename)
+    {
+        $original = $this->getLogoPath().$filename;
+        $thumb = $this->getLogoThumbPath().$filename;
+        
+        if (!$image = new JImage($original)) {
+            JFactory::getApplication()->enqueueMessage('errore in open image', 'error');
+        }
+        $sourceWidth = $image->getWidth();
+        $sourceHeight = $image->getHeight();
+        $ratio = max($sourceWidth, $sourceHeight) / 200;
+        $ratio = max($ratio, 1.0);
+        $resizedWidth = (int)($sourceWidth / $ratio);
+        $resizedHeight = (int)($sourceHeight / $ratio);
+        $left = 0;
+        $top = 0;
+        $resized = $image->resize($resizedWidth, $resizedHeight, true, JImage::SCALE_OUTSIDE);
+        if (!file_exists($this->getLogoThumbPath())) {
+            JFolder::create($this->getLogoThumbPath());
+        }
+        $resized->toFile($thumb);
+    }
+
+    public function deleteLogoThumbnail($filename)
+    {
+        $path = $this->getLogoThumbPath().$filename;
+        if (file_exists($path)) {
+            JFile::delete($path);
         }
     }
 

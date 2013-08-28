@@ -15,6 +15,20 @@ class IPieViewCompany extends JView
     function display($tpl = null)
     {
         $this->item = $this->get('Data');
+        // settori
+        $this->sectors = array();
+        foreach ($this->item->sectors as $s) {
+            $this->sectors[] = $s->name;
+        }
+        // area eccellenza
+        $lang = JFactory::getLanguage();
+        $locale = $lang->getLocale();
+        if ('it' == $locale[4]) {
+            $this->area_eccellenza = $this->item->area_eccellenza_it;
+        } else {
+            $this->area_eccellenza = $this->item->area_eccellenza_en;
+        }
+
 
         // Display the view
         parent::display($tpl);

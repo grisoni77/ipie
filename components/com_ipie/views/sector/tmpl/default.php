@@ -29,12 +29,15 @@ $pathway->addItem(JText::sprintf('Settore %s', $sector['name']));
 </p>
 <?php foreach ($items as $item) : 
     $slug = JFilterOutput::stringURLUnicodeSlug($item->name);
-    $link = JRoute::_('index.php?option=com_ipie&view=company&id='.$item->company_id.':'.$slug);
-    //print_r($item);
+    $link = IPieHelperRoute::companyLink($item->company_id, $slug, 
+            array('Itemid' => IPieHelperRoute::getItemid(array(
+                'view' => 'sector',
+                'filter_sector' => $sector['sector_id']
+            ))));
 ?>
 <ul class="arancio">
     <li>
-        <a href="<?php echo $link ?>" title="Vedi dettaglio">
+        <a href="<?php echo JRoute::_($link) ?>" title="Vedi dettaglio">
             <?php echo $item->name ?>
         </a>
     </li>

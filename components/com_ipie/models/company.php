@@ -19,8 +19,21 @@ class IPieSiteModelCompany extends IPieModelCompany
             JError::raiseError(400, 'ID is not valid in file ' . __FILE__);
         }
         
-        $item = $this->getItem($company_id);
+        //$item = $this->getItem($company_id);
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('c.*')
+                ->select('ci.name as city, p.name as province')
+                ->select('p.code as province_code')
+                ->from('#__ipie_company c')
+                ->join('INNER', '#__ipie_city ci ON (ci.city_id=c.city_id)')
+                ->join('INNER', '#__ipie_province p ON (ci.province_id=p.province_id)')
+                ->where('c.company_id = '.$company_id)
+                ;
+        $db->setQuery($query);
+        $item = $db->loadObject();
         $item->related = $this->getRelated($company_id);
+        $item->sectors = $this->getSectors();
         $item->factors = $this->getFactors();
         
         return $item;

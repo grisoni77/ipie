@@ -12,7 +12,7 @@ define('IPIE_LOADER', 1);
 JLoader::register(PFX.'Helper',          JPATH_ADMINISTRATOR. '/components/'.CNL.'/helpers/base.php');
 JLoader::register(PFX.'HelperUi',        JPATH_ADMINISTRATOR. '/components/'.CNL.'/helpers/ui.php');
 JLoader::register(PFX.'HelperMailer',    JPATH_ADMINISTRATOR. '/components/'.CNL.'/helpers/mailer.php');
-JLoader::register(PFX.'HelperRouter',    JPATH_SITE. '/components/'.CNL.'/helpers/router.php');
+JLoader::register(PFX.'HelperRoute',     JPATH_SITE. '/components/'.CNL.'/helpers/route.php');
 
 JLoader::discover(PFX.'ControllerForm', JPATH_ADMINISTRATOR. '/components/'.CNL.'/controllers/form.php', true, false);
 JLoader::discover(PFX.'Model', JPATH_ADMINISTRATOR. '/components/'.CNL.'/models', true, false);

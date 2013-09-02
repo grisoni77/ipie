@@ -49,4 +49,17 @@ function modChrome_sidebar($module, &$params, &$attribs)
 		<?php echo $module->content; ?>
 	<?php endif;
 }
+
+function modChrome_nea2($module, &$params, &$attribs)
+{
+	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 3;
+	if (!empty ($module->content)) : ?>
+		<div class="moduletable<?php echo $params->get('moduleclass_sfx'); ?>">
+			<?php if ($module->showtitle) : ?>
+				<h<?php echo $headerLevel; ?>><span><?php echo $module->title; ?></span></h<?php echo $headerLevel; ?>>
+			<?php endif; ?>
+			<?php echo $module->content; ?>
+		</div>
+	<?php endif;
+}
 ?>

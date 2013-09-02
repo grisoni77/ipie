@@ -2,7 +2,7 @@
 $doc = JFactory::getDocument();
 $doc->addScript(JURI::root().'/modules/mod_ipie_search/assets/jquery.placeholder.js');
 
-$action = JRoute::_('index.php');
+$action = 'index.php';//JRoute::_('index.php');
 
 ?>
 <form action="<?php echo $action ?>" method="get" class="-koowa-grid" id="form1">

@@ -26,11 +26,11 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_city`
+-- Struttura della tabella `p7fve_ipie_city`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_city`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_city` (
+DROP TABLE IF EXISTS `p7fve_ipie_city`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_city` (
   `city_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `province_id` int(20) unsigned NOT NULL,
   `istat` varchar(10) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -43,10 +43,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_city` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT AUTO_INCREMENT=1240 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_city`
+-- Dump dei dati per la tabella `p7fve_ipie_city`
 --
 
-INSERT INTO `ipie_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitudine`, `longitudine`, `published`) VALUES
+INSERT INTO `p7fve_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitudine`, `longitudine`, `published`) VALUES
 (1, 6, '001219', 'Rivoli', 45.070366, 7.519853, 1),
 (8, 3, '096035', 'Mongrando', 45.529221, 8.008296, 1),
 (9, 1, '006003', 'Alessandria', 44.913216, 8.616951, 1),
@@ -932,7 +932,7 @@ INSERT INTO `ipie_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitu
 (916, 6, '001204', 'Pramollo', 44.904049, 7.214573, 1),
 (917, 8, '002104', 'Prarolo', 45.280960, 8.477667, 1),
 (918, 6, '001205', 'Prarostino', 44.866631, 7.268449, 1);
-INSERT INTO `ipie_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitudine`, `longitudine`, `published`) VALUES
+INSERT INTO `p7fve_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitudine`, `longitudine`, `published`) VALUES
 (919, 1, '006139', 'Prasco', 44.639732, 8.552413, 1),
 (920, 6, '001206', 'Prascorsano', 45.368759, 7.618148, 1),
 (921, 6, '001207', 'Pratiglione', 45.353649, 7.596200, 1),
@@ -1258,11 +1258,11 @@ INSERT INTO `ipie_ipie_city` (`city_id`, `province_id`, `istat`, `name`, `latitu
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_company`
+-- Struttura della tabella `p7fve_ipie_company`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_company`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_company` (
+DROP TABLE IF EXISTS `p7fve_ipie_company`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_company` (
   `company_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `province_id` int(20) unsigned NOT NULL,
@@ -1291,10 +1291,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_company` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_company`
+-- Dump dei dati per la tabella `p7fve_ipie_company`
 --
 
-INSERT INTO `ipie_ipie_company` (`company_id`, `name`, `province_id`, `city_id`, `cap`, `address`, `ragione_sociale`, `piva`, `employees`, `year_foundation`, `email`, `web`, `logo`, `area_eccellenza_it`, `area_eccellenza_en`, `collaborazioni`, `published`, `user_id`, `created_on`, `created_by`, `modified_on`, `modified_by`) VALUES
+INSERT INTO `p7fve_ipie_company` (`company_id`, `name`, `province_id`, `city_id`, `cap`, `address`, `ragione_sociale`, `piva`, `employees`, `year_foundation`, `email`, `web`, `logo`, `area_eccellenza_it`, `area_eccellenza_en`, `collaborazioni`, `published`, `user_id`, `created_on`, `created_by`, `modified_on`, `modified_by`) VALUES
 (1, 'nuova e libera', 2, 55, '', '', '', '', 100, '', '', NULL, NULL, '', '', NULL, 0, NULL, NULL, NULL, NULL, NULL),
 (7, 'La Nuova Brevetti Inc.', 6, 326, '10100', 'Via Roma 64', 'spa', '23332423333', 100, '1995', 'cristiano.cucco@gmail.com', '', '52025de0daf4f_2fa67f482133f1c934235b73c2a03954_XL (1).jpg', 'hguyg', 'jhgj', '', 1, 831, '2013-08-07 13:15:07', 828, '2013-08-07 14:46:57', 828),
 (8, 'New Acta', 1, 113, '', '', '', '', 0, '', '', NULL, NULL, '', '', NULL, 0, 832, '2013-08-05 15:53:17', 828, '2013-08-05 15:53:17', 828),
@@ -1303,11 +1303,11 @@ INSERT INTO `ipie_ipie_company` (`company_id`, `name`, `province_id`, `city_id`,
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_draft`
+-- Struttura della tabella `p7fve_ipie_draft`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_draft`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_draft` (
+DROP TABLE IF EXISTS `p7fve_ipie_draft`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_draft` (
   `draft_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(128) DEFAULT NULL,
   `province_id` int(20) unsigned NOT NULL,
@@ -1337,10 +1337,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_draft` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_draft`
+-- Dump dei dati per la tabella `p7fve_ipie_draft`
 --
 
-INSERT INTO `ipie_ipie_draft` (`draft_id`, `name`, `province_id`, `city_id`, `cap`, `address`, `ragione_sociale`, `piva`, `employees`, `year_foundation`, `email`, `web`, `logo`, `area_eccellenza_it`, `area_eccellenza_en`, `collaborazioni`, `company_id`, `state`, `created_on`, `created_by`, `modified_on`, `modified_by`) VALUES
+INSERT INTO `p7fve_ipie_draft` (`draft_id`, `name`, `province_id`, `city_id`, `cap`, `address`, `ragione_sociale`, `piva`, `employees`, `year_foundation`, `email`, `web`, `logo`, `area_eccellenza_it`, `area_eccellenza_en`, `collaborazioni`, `company_id`, `state`, `created_on`, `created_by`, `modified_on`, `modified_by`) VALUES
 (3, 'New Acta', 1, 113, '', '', '', '', 0, '', '', NULL, NULL, '', '', NULL, 8, 'pending', '2013-08-05 15:53:17', 828, '2013-08-05 15:53:17', 828),
 (37, 'La Nuova Brevetti Inculata', 6, 326, '10100', 'Via Roma 64', 'spa', '23332423333', 100, '1995', 'cristiano.cucco@gmail.com', '', '52025de0daf4f_2fa67f482133f1c934235b73c2a03954_XL (1).jpg', 'hguyg', 'jhgj', '', 7, 'editable', '2013-08-07 14:46:57', 828, '2013-08-08 13:45:30', 828),
 (41, 'Chupa Hard', 2, 342, '', '', '', '23332423333', 0, '', 'cristiano.cucco@gmail.com', NULL, NULL, '', '', NULL, 12, 'editable', '2013-08-09 13:58:03', 828, '2013-08-09 13:58:03', 828);
@@ -1348,11 +1348,11 @@ INSERT INTO `ipie_ipie_draft` (`draft_id`, `name`, `province_id`, `city_id`, `ca
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_factor`
+-- Struttura della tabella `p7fve_ipie_factor`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_factor`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_factor` (
+DROP TABLE IF EXISTS `p7fve_ipie_factor`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_factor` (
   `factor_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `description` varchar(256) NOT NULL,
   `published` tinyint(4) NOT NULL DEFAULT '1',
@@ -1360,21 +1360,21 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_factor` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_factor`
+-- Dump dei dati per la tabella `p7fve_ipie_factor`
 --
 
-INSERT INTO `ipie_ipie_factor` (`factor_id`, `description`, `published`) VALUES
+INSERT INTO `p7fve_ipie_factor` (`factor_id`, `description`, `published`) VALUES
 (1, 'bhbhhbhbhbhb', 0),
 (2, 'jfjfkjfkjkfjkf', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_factor_company`
+-- Struttura della tabella `p7fve_ipie_factor_company`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_factor_company`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_factor_company` (
+DROP TABLE IF EXISTS `p7fve_ipie_factor_company`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_factor_company` (
   `factor_id` int(20) unsigned NOT NULL,
   `company_id` int(20) unsigned NOT NULL,
   PRIMARY KEY (`factor_id`,`company_id`),
@@ -1382,20 +1382,20 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_factor_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_factor_company`
+-- Dump dei dati per la tabella `p7fve_ipie_factor_company`
 --
 
-INSERT INTO `ipie_ipie_factor_company` (`factor_id`, `company_id`) VALUES
+INSERT INTO `p7fve_ipie_factor_company` (`factor_id`, `company_id`) VALUES
 (2, 7);
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_province`
+-- Struttura della tabella `p7fve_ipie_province`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_province`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_province` (
+DROP TABLE IF EXISTS `p7fve_ipie_province`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_province` (
   `province_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(500) NOT NULL,
   `code` varchar(10) NOT NULL,
@@ -1403,10 +1403,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_province` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT AUTO_INCREMENT=9 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_province`
+-- Dump dei dati per la tabella `p7fve_ipie_province`
 --
 
-INSERT INTO `ipie_ipie_province` (`province_id`, `name`, `code`) VALUES
+INSERT INTO `p7fve_ipie_province` (`province_id`, `name`, `code`) VALUES
 (1, 'Alessandria', 'Al'),
 (2, 'Asti', 'At'),
 (3, 'Biella', 'Bi'),
@@ -1419,11 +1419,11 @@ INSERT INTO `ipie_ipie_province` (`province_id`, `name`, `code`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_registration`
+-- Struttura della tabella `p7fve_ipie_registration`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_registration`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_registration` (
+DROP TABLE IF EXISTS `p7fve_ipie_registration`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_registration` (
   `registration_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(256) NOT NULL,
   `piva` varchar(256) NOT NULL,
@@ -1442,10 +1442,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_registration` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_registration`
+-- Dump dei dati per la tabella `p7fve_ipie_registration`
 --
 
-INSERT INTO `ipie_ipie_registration` (`registration_id`, `name`, `piva`, `city_id`, `province_id`, `email`, `username`, `password`, `state`, `company_id`, `created_on`) VALUES
+INSERT INTO `p7fve_ipie_registration` (`registration_id`, `name`, `piva`, `city_id`, `province_id`, `email`, `username`, `password`, `state`, `company_id`, `created_on`) VALUES
 (1, 'Acme', '233324233333333111', 55, 1, 'cristiano.cucco@gmail.com', 'cristiano', 'mypass', 'pending', NULL, '2013-08-05 00:00:00'),
 (2, 'La Brevetti', '233456456333111', 113, 1, 'cristiano.cuccos@gmail.com', 'gris77', 'mypass2', 'approved', NULL, '2013-08-05 00:00:00'),
 (3, 'New Acta', '233324233333333111', 113, 1, 'cristiano.cuccot@gmail.com', 'cristiano322', 'mypass', 'approved', NULL, '2013-08-05 00:00:00'),
@@ -1455,32 +1455,32 @@ INSERT INTO `ipie_ipie_registration` (`registration_id`, `name`, `piva`, `city_i
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_sector`
+-- Struttura della tabella `p7fve_ipie_sector`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_sector`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_sector` (
+DROP TABLE IF EXISTS `p7fve_ipie_sector`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_sector` (
   `sector_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`sector_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_sector`
+-- Dump dei dati per la tabella `p7fve_ipie_sector`
 --
 
-INSERT INTO `ipie_ipie_sector` (`sector_id`, `name`) VALUES
+INSERT INTO `p7fve_ipie_sector` (`sector_id`, `name`) VALUES
 (1, 'Agroalimentare'),
 (2, 'Ambiente-Energia');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_subsector`
+-- Struttura della tabella `p7fve_ipie_subsector`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_subsector`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector` (
+DROP TABLE IF EXISTS `p7fve_ipie_subsector`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_subsector` (
   `subsector_id` int(20) unsigned NOT NULL AUTO_INCREMENT,
   `sector_id` int(20) unsigned NOT NULL,
   `name` varchar(45) NOT NULL,
@@ -1489,10 +1489,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_subsector`
+-- Dump dei dati per la tabella `p7fve_ipie_subsector`
 --
 
-INSERT INTO `ipie_ipie_subsector` (`subsector_id`, `sector_id`, `name`) VALUES
+INSERT INTO `p7fve_ipie_subsector` (`subsector_id`, `sector_id`, `name`) VALUES
 (1, 1, 'Coltivazioni agricole'),
 (2, 1, 'Macchinari e servizi'),
 (3, 2, 'Attrezzature e servizi'),
@@ -1501,11 +1501,11 @@ INSERT INTO `ipie_ipie_subsector` (`subsector_id`, `sector_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_subsector_company`
+-- Struttura della tabella `p7fve_ipie_subsector_company`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_subsector_company`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector_company` (
+DROP TABLE IF EXISTS `p7fve_ipie_subsector_company`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_subsector_company` (
   `subsector_id` int(20) unsigned NOT NULL,
   `company_id` int(20) unsigned NOT NULL,
   PRIMARY KEY (`subsector_id`,`company_id`),
@@ -1513,10 +1513,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector_company` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_subsector_company`
+-- Dump dei dati per la tabella `p7fve_ipie_subsector_company`
 --
 
-INSERT INTO `ipie_ipie_subsector_company` (`subsector_id`, `company_id`) VALUES
+INSERT INTO `p7fve_ipie_subsector_company` (`subsector_id`, `company_id`) VALUES
 (1, 7),
 (4, 7),
 (3, 8);
@@ -1524,11 +1524,11 @@ INSERT INTO `ipie_ipie_subsector_company` (`subsector_id`, `company_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ipie_ipie_subsector_draft`
+-- Struttura della tabella `p7fve_ipie_subsector_draft`
 --
 
-DROP TABLE IF EXISTS `ipie_ipie_subsector_draft`;
-CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector_draft` (
+DROP TABLE IF EXISTS `p7fve_ipie_subsector_draft`;
+CREATE TABLE IF NOT EXISTS `p7fve_ipie_subsector_draft` (
   `subsector_id` int(20) unsigned NOT NULL,
   `draft_id` int(20) unsigned NOT NULL,
   PRIMARY KEY (`subsector_id`,`draft_id`),
@@ -1536,10 +1536,10 @@ CREATE TABLE IF NOT EXISTS `ipie_ipie_subsector_draft` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dump dei dati per la tabella `ipie_ipie_subsector_draft`
+-- Dump dei dati per la tabella `p7fve_ipie_subsector_draft`
 --
 
-INSERT INTO `ipie_ipie_subsector_draft` (`subsector_id`, `draft_id`) VALUES
+INSERT INTO `p7fve_ipie_subsector_draft` (`subsector_id`, `draft_id`) VALUES
 (1, 37),
 (4, 37);
 
@@ -1548,60 +1548,60 @@ INSERT INTO `ipie_ipie_subsector_draft` (`subsector_id`, `draft_id`) VALUES
 --
 
 --
--- Limiti per la tabella `ipie_ipie_city`
+-- Limiti per la tabella `p7fve_ipie_city`
 --
-ALTER TABLE `ipie_ipie_city`
-  ADD CONSTRAINT `ipie_ipie_city_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `ipie_ipie_province` (`province_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `p7fve_ipie_city`
+  ADD CONSTRAINT `p7fve_ipie_city_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `p7fve_ipie_province` (`province_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limiti per la tabella `ipie_ipie_company`
+-- Limiti per la tabella `p7fve_ipie_company`
 --
-ALTER TABLE `ipie_ipie_company`
-  ADD CONSTRAINT `ipie_ipie_company_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `ipie_ipie_province` (`province_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `ipie_ipie_company_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `ipie_ipie_city` (`city_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `p7fve_ipie_company`
+  ADD CONSTRAINT `p7fve_ipie_company_ibfk_1` FOREIGN KEY (`province_id`) REFERENCES `p7fve_ipie_province` (`province_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `p7fve_ipie_company_ibfk_2` FOREIGN KEY (`city_id`) REFERENCES `p7fve_ipie_city` (`city_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Limiti per la tabella `ipie_ipie_draft`
+-- Limiti per la tabella `p7fve_ipie_draft`
 --
-ALTER TABLE `ipie_ipie_draft`
-  ADD CONSTRAINT `fk_draft_company1` FOREIGN KEY (`company_id`) REFERENCES `ipie_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ipie_ipie_draft_ipie_ipie_city1` FOREIGN KEY (`city_id`) REFERENCES `ipie_ipie_city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ipie_ipie_draft_ipie_ipie_province1` FOREIGN KEY (`province_id`) REFERENCES `ipie_ipie_province` (`province_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_draft`
+  ADD CONSTRAINT `fk_draft_company1` FOREIGN KEY (`company_id`) REFERENCES `p7fve_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ipie_ipie_draft_ipie_ipie_city1` FOREIGN KEY (`city_id`) REFERENCES `p7fve_ipie_city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ipie_ipie_draft_ipie_ipie_province1` FOREIGN KEY (`province_id`) REFERENCES `p7fve_ipie_province` (`province_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `ipie_ipie_factor_company`
+-- Limiti per la tabella `p7fve_ipie_factor_company`
 --
-ALTER TABLE `ipie_ipie_factor_company`
-  ADD CONSTRAINT `fk_factor_company_company1` FOREIGN KEY (`company_id`) REFERENCES `ipie_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_factor_company_factor1` FOREIGN KEY (`factor_id`) REFERENCES `ipie_ipie_factor` (`factor_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_factor_company`
+  ADD CONSTRAINT `fk_factor_company_company1` FOREIGN KEY (`company_id`) REFERENCES `p7fve_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_factor_company_factor1` FOREIGN KEY (`factor_id`) REFERENCES `p7fve_ipie_factor` (`factor_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `ipie_ipie_registration`
+-- Limiti per la tabella `p7fve_ipie_registration`
 --
-ALTER TABLE `ipie_ipie_registration`
-  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_city1` FOREIGN KEY (`city_id`) REFERENCES `ipie_ipie_city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_company1` FOREIGN KEY (`company_id`) REFERENCES `ipie_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_province1` FOREIGN KEY (`province_id`) REFERENCES `ipie_ipie_province` (`province_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_registration`
+  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_city1` FOREIGN KEY (`city_id`) REFERENCES `p7fve_ipie_city` (`city_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_company1` FOREIGN KEY (`company_id`) REFERENCES `p7fve_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ipie_ipie_registration_ipie_ipie_province1` FOREIGN KEY (`province_id`) REFERENCES `p7fve_ipie_province` (`province_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `ipie_ipie_subsector`
+-- Limiti per la tabella `p7fve_ipie_subsector`
 --
-ALTER TABLE `ipie_ipie_subsector`
-  ADD CONSTRAINT `fk_subsector_sector` FOREIGN KEY (`sector_id`) REFERENCES `ipie_ipie_sector` (`sector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_subsector`
+  ADD CONSTRAINT `fk_subsector_sector` FOREIGN KEY (`sector_id`) REFERENCES `p7fve_ipie_sector` (`sector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `ipie_ipie_subsector_company`
+-- Limiti per la tabella `p7fve_ipie_subsector_company`
 --
-ALTER TABLE `ipie_ipie_subsector_company`
-  ADD CONSTRAINT `fk_subsector_company_company1` FOREIGN KEY (`company_id`) REFERENCES `ipie_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_subsector_company_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `ipie_ipie_subsector` (`subsector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_subsector_company`
+  ADD CONSTRAINT `fk_subsector_company_company1` FOREIGN KEY (`company_id`) REFERENCES `p7fve_ipie_company` (`company_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_subsector_company_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `p7fve_ipie_subsector` (`subsector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Limiti per la tabella `ipie_ipie_subsector_draft`
+-- Limiti per la tabella `p7fve_ipie_subsector_draft`
 --
-ALTER TABLE `ipie_ipie_subsector_draft`
-  ADD CONSTRAINT `fk_subsector_draft_draft1` FOREIGN KEY (`draft_id`) REFERENCES `ipie_ipie_draft` (`draft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_subsector_draft_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `ipie_ipie_subsector` (`subsector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `p7fve_ipie_subsector_draft`
+  ADD CONSTRAINT `fk_subsector_draft_draft1` FOREIGN KEY (`draft_id`) REFERENCES `p7fve_ipie_draft` (`draft_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_subsector_draft_subsector1` FOREIGN KEY (`subsector_id`) REFERENCES `p7fve_ipie_subsector` (`subsector_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
 COMMIT;
 

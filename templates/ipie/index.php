@@ -95,72 +95,10 @@ l[i].onclick=function(){window.open(this.href);return(false)};
  <div class="clr"></div>
      <?php if ($this->countModules('left')) { ?>
             <div id="sidebar-left">     	 
-                <div class="moduletable_aziende">
-							<h2><span>Aziende per settore</span></h2>
-						<ul>
-    <li id="s1">
-        <a href="#" title="Tessile">
-            <span>Tessile</span>
-        </a>
-    </li>
-    <li id="s2">
-        <a href="#" title="Agroalimentare">
-            <span>Agroalimentare</span>
-        </a>
-    </li>
-    <li id="s3">
-        <a href="#" title="Ambiente-Energia">
-            <span>Ambiente-Energia</span>
-        </a>
-    </li>
-    <li id="s4">
-        <a href="#" title="Automotive">
-            <span>Automotive</span>
-        </a>
-    </li>
-    <li id="s5">
-        <a href="#" title="Scienze della vita">
-            <span>Scienze della vita</span>
-        </a>
-    </li>
-    <li id="s6">
-        <a href="#" title="ICT">
-            <span>ICT</span>
-        </a>
-    </li>
-    <li id="s7">
-        <a href="#" title="Trasporti">
-            <span>Trasporti</span>
-        </a>
-    </li>
-    <li id="s8">
-        <a href="#" title="Materiali">
-            <span>Materiali</span>
-        </a>
-    </li>
-    <li id="s9">
-        <a href="#" title="Design">
-            <span>Design</span>
-        </a>
-    </li>
-    <li id="s10">
-        <a href="#" title="Ecocostruzioni">
-            <span>Ecocostruzioni</span>
-        </a>
-    </li>
-    <li id="s11">
-        <a href="#" title="Media/audiovisivi">
-            <span>Media/audiovisivi</span>
-        </a>
-    </li>
-    <li id="s12">
-        <a href="#" title="Meccatronica">
-            <span>Meccatronica</span>
-        </a>
-    </li>
-</ul>		</div>
- <jdoc:include type="modules" name="left" style="nea" headerLevel="2" />
-        <hr /> </div><!-- end sidebar_left -->
+
+                <jdoc:include type="modules" name="left" style="nea2" headerLevel="2" />
+                <hr /> 
+            </div><!-- end sidebar_left -->
         <?php } ?>
       <?php if ($this->countModules('right')) { ?>
         <div id="sidebar-right">
@@ -176,53 +114,6 @@ l[i].onclick=function(){window.open(this.href);return(false)};
   </div>
 <hr /> 
     <?php } ?>
-       <div id="ricerca">
-         		<div class="moduletable">
-							<h2><span>Cerca azienda</span></h2>
-						
-
-<form action="/it/risultati-cerca-azienda.html?sort=firm_name" method="get" class="-koowa-grid" id="form1" data-token-name="_token" data-token-value="68b0ec0f85fb69243a3e0407a6ced2ac">
-<input type="hidden" name="sort" value="firm_name" />
-    <div id="form_az">
-	<label for="chiave">Parola chiave:</label> 
-	<input type="text" id="chiave" name="keywords" value="-- parola chiave --" />
-    	<label for="sector_id">Settore di attività:</label>
-    	<select name="sector_id" id="sector_id" size="1">
-<option value="0"  >-- settore --</option>
-<option value="2"  >Agroalimentare</option>
-<option value="3"  >Ambiente-Energia</option>
-<option value="4"  >Automotive</option>
-<option value="9"  >Design</option>
-<option value="10"  >Ecocostruzioni</option>
-<option value="6"  >ICT</option>
-<option value="8"  >Materiali</option>
-<option value="12"  >Meccatronica</option>
-<option value="11"  >Media/Audiovisivi</option>
-<option value="5"  >Scienze della vita</option>
-<option value="1"  >Tessile</option>
-<option value="7"  >Trasporti</option>
-</select>	<label for="nomeaz">nome azienda:</label>
-	<input type="text" id="nomeaz" name="search" value="-- nome azienda --" />
-    <label for="sector_id">Provincia:</label>
-<select name="prov" id="prov" size="1">
-<option value="0"  >-- provincia --</option>
-<option value="1"  >Alessandria</option>
-<option value="2"  >Asti</option>
-<option value="3"  >Biella</option>
-<option value="4"  >Cuneo</option>
-<option value="5"  >Novara</option>
-<option value="6"  >Verbania</option>
-<option value="7"  >Vercelli</option>
-</select>
-        
-<input type="submit" id="form1_submit" value="Cerca" />
-<input type="reset" id="form1_reset" value="Nuova ricerca" />
-    </div>
-</form>
-		</div>
-</div>	
-
-<hr /> 
  <?php if ($this->countModules('breadcrumb')) { ?>
  <div id="pathway">
             <jdoc:include type="modules" name="breadcrumb" />

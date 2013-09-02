@@ -8,7 +8,6 @@
 /tmp/
 /includes/
 /plugins/
-/templates/
 /libraries/
 /robots.txt
 /configuration.php
@@ -33,3 +32,6 @@ components/*
 modules/*
 !modules/mod_ipie_search
 !modules/mod_ipie_sectors
+
+templates/*
+!templates/ipie/

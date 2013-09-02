@@ -1,0 +1,170 @@
+html {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	text-align: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	margin: 0px;
+	padding: 0px;
+	color: #333;
+	width: 100%;
+	}
+
+div, p, span,pre, input, form, h1, h2, h3, h4, h5, h6, table, tr, td, th {
+	text-align: left;
+	margin: 0px;
+	padding: 0px 0px 4px 0px;
+	border: 0px;
+	}
+	
+a { text-decoration:none; color: #999!important;}
+img {
+	border: 0px;
+}
+	
+table {
+	width: 90%; 
+	border: 1px solid #999;
+	border-collapse: collapse;
+	margin: 8px 0px;
+	}
+caption {
+	font-weight: bold;
+	text-align: left;
+}	
+	
+td, th {
+	padding: 4px;
+	border: 1px solid #999;
+	border-collapse: collapse;
+	}
+
+dl {	margin: 0px; padding: 0px; }
+dt {	font-weight: bold; margin-bottom: 3px;}
+dd	{	margin:0px; }
+
+h3, h4, h5, h6 { margin-top: 1em; }
+h1 { font-size: 150%; color: #555; border-bottom: 1px solid #999; padding-bottom: 5px; margin-bottom: 5px;}
+h2 { font-size: 140%; color: #999; border-bottom: 1px dashed #999; margin-bottom: 5px;}
+h3 { font-size: 130%; color: #999; }
+h4 { font-size: 120%; }
+h5 { font-size: 110%; }
+h6 { font-size: 100%; }
+
+ul, ol {
+	margin-top: 4px;
+	line-height: 1.2em;
+	}
+	
+li {
+	margin-bottom: 0.6em;
+	list-style: circle;
+	}
+
+input, textarea	{
+	border: 1px solid #555; vertical-align: top;
+		}
+		textarea	{
+	width: 98%;
+		}
+
+.spazio {
+	margin-top: 1em; border-top: 1px dashed #999;
+}
+.fonte {
+	font-style: italic;
+}
+.blocco {
+	margin-bottom: 15px;
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #999999;
+}
+.scheda .spazia {
+	margin-top: 15px;
+}
+
+.scheda img.logo {
+	float: right; max-width: 320px; max-height: 180px;
+}
+.scheda ul.bollini {	float: right; margin-top: -7px!important;
+}
+.scheda ul.bollini li {
+	float: left; display: block; width:65px; height: 42px;
+}
+.scheda ul.bollini li span {	display:none; }
+.scheda ul.bollini li#ito2011 {
+ background: url(../images/OK_bollino_2011.gif) no-repeat;
+}
+.scheda ul.progetti {
+padding-left: 0px!important;
+}
+.scheda ul.progetti li {
+	display:inline; background: none!important;
+padding-left: 0px!important; padding-right: 10px!important;
+}
+.scheda ul.arancio li {
+	float: left; width: 47%; 
+}
+.blocco div { display:block !important;  
+	background: #fff;
+	color: black;
+	text-align: left;
+	padding: 1em;
+	  border: 1px dashed;
+  border-color: #acacac #636363 #636363 #bababa ;
+ width: 700px!important;	
+}
+.blocco div  p { width: 680px!important; color: #999999 }
+
+img.mappa {
+	display:none;
+}
+.caso {
+	float: left; width: 100%;
+}
+.caso .toleft {
+	float: left; width: 250px;
+		font-size: 0.95em;
+}
+.caso .toright {
+	float: right; width: 700px;
+}
+.caso .toleft img {
+	display: block; margin-bottom: 0.8em;
+}
+.caso .toright p { margin-bottom: 1.5em; }
+.caso .cit {
+	font-weight: bold; font-style: italic;
+}
+.caso .nome {	text-align: right; }
+
+#top, .menu-nav, #ja-mainnav, #pathway, #sidebar-left, #sidebar-right, hr, .hidden, .pagination, .pagescounter, .buttonheading,
+#logos, #ricerca, .itp-socialbuttons-mod, ul.actions, .qlform .author{
+	display:none;
+}
+
+#footer {
+   clear: both; width: 100%;
+	font-size: 0.90em;
+	}			
+	.moduletable_footer { clear: both; width: 100%; border-top: 1px solid #555;
+	padding-top: 5px;
+		
+	}	
+
+/*|||classi per banali flottaggi |||*/
+.sinistra { float: left; }
+.destra { float: right; }
+.centro { text-align: center!important }
+.imgleft img, img.imgleft { float: left; padding-right: 5px; }
+.imgright img, img.imgright { float: right!important; padding-left: 5px; }	
+
+/*classe per | totalmente invisibile*/
+.pipe {
+	display: none;
+	}
+
+

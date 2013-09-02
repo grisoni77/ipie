@@ -1,0 +1,45 @@
+#logos {width:250px !important;}
+#top {width: 706px !important;}
+#strumenti{ width: 550px !important; }
+ul#mainlevel-nav{width:706px !important;}
+#banner_ani{width: 706px!important;}
+/*#ricerca{height: 19px !important;}*/
+#body_outer #ricerca #form_az {
+ margin-top: 0px;	
+ height: auto!important; min-height: 27px; height: 27px;
+ }
+#ricerca input, #ricerca select{  float: left !important;}
+#ja-mainnav li a:hover{font-size: 1.05em !important;}
+
+ul.pagination {  width: 100%; }
+div.pagescounter { /* pagina x di y */
+	float: left; width: 100%; text-align: right;
+	padding: 0em;
+   clear: none;
+   margin: 0px 0px 0.25em 0px!important;
+}
+ .word_p, .pdf_p, .excel_p, .powerp_p, .zip_p, .load_p, .quicktime_p, .mp_p, .wordz_p, .pdfz_p, .excelz_p, .powerpz_p {
+ 	display: block; width: 24px; height: 24px; margin-top: 10px;
+ }
+ .moduletable_log {
+ 	/*float: right;*/
+	position: absolute;
+	bottom: 35px; right: 0px;
+	 width: 20%;
+	text-align: left;
+	padding: 0.5em;
+   border: 2px dashed #F8FAFA;
+ }
+
+   #body_outer #ricerca #form_az input, #body_outer #ricerca #form_az select {
+  padding: 0px 0px 0px 2px;
+  border: 1px solid;
+  border-color: #636363 #acacac #bababa #636363;	
+  margin-right: 5px;
+  margin-top: 4px;
+  height: 18px;
+  }
+  
+  .ari-cloud-carousel {
+	margin-top: -170px;
+}

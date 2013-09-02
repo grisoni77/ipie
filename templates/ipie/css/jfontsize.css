@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+/**
+ * File       
+ * Created    5/9/13 8:46 PM 
+ * Author     Matt Thomas | matt@betweenbrain.com | http://betweenbrain.com
+ * Support    https://github.com/betweenbrain/
+ * Copyright  Copyright (C) 2013 betweenbrain llc. All Rights Reserved.
+ * License    GNU GPL v3 or later
+ */
+
+a.jfontsize-button  {
+display:block;
+width: 16px;
+height: 16px;
+}
+
+a.jfontsize-button  span {
+	position:absolute; left:0px; top:-500px; width:1px; height:1px; overflow:hidden;
+}
+
+a#jfontsize-plus {
+	background: url(../images/user-increase.png) no-repeat;
+}
+a#jfontsize-default {
+		background: url(../images/user-reset.png) no-repeat;
+}
+a#jfontsize-minus {
+background: url(../images/user-decrease.png) no-repeat;
+}
+
+.jfontsize-disabled {
+opacity:0.6;
+filter:alpha(opacity=60); /* For IE8 and earlier */
+}

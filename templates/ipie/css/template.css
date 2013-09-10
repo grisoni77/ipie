@@ -943,3 +943,9 @@ span.spacer > span.text label {
   color:#cc0000;
 
 }
+
+
+#map_canvas {
+    width:100%;
+    height: 400px;
+}

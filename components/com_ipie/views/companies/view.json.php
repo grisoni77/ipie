@@ -27,6 +27,9 @@ class IPieViewCompanies extends JView
             $results[] = array(
                 'company_id' => $item->company_id,
                 'name' => $item->name,
+                'address' => sprintf('%s %s %s %s', 
+                    $item->address, $item->cap, $item->city, $item->province),
+                'web' => $item->web,
             );
         }
         

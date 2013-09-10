@@ -27,6 +27,7 @@ class JFormRuleLogo extends JFormRule {
         // get input
         $jinput = JFactory::getApplication()->input;
         $files = $jinput->files->get('jform');
+        //print_r($files);die();
         $file = $files['logo'];
         // get form db
         $cl = $input->get('current_logo');

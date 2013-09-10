@@ -65,9 +65,17 @@ class IPieModelCompany extends IPieModelAdmin
         if ($res)
         {
             // get company_id
-            $id = $this->getState($this->getName() . '.id');
-            $this->saveSectors($id, $data['sectors']);
-            $this->saveFactors($id, $data['factors']);
+            if (empty($data['company_id'])) {
+            	$id = $this->getState($this->getName() . '.id');
+            } else {
+		$id = $data['company_id'];
+            }
+            if (!$this->saveSectors($id, $data['sectors'])) {
+            	return false;
+            }
+            if (!$this->saveFactors($id, $data['factors'])) {
+            	return false;
+            }
 
             // se richiesto salva anche il draft allineandolo ai nuovi dati
             if ($reset_draft)
@@ -89,9 +97,12 @@ class IPieModelCompany extends IPieModelAdmin
                 $data['company_id'] = $id;
                 $model = JModel::getInstance('Draft', 'IPieModel');
                 if (!$model->save($data)) {
-                    throw new Exception($model->getError(), 400);
+                    $this->setError($model->getError());
+                    return false;
                 }
             }
+        } else {
+            $this->setError('Errore in salvataggio azienda: '.$this->getError());
         }
         return $res;
     }
@@ -153,7 +164,10 @@ class IPieModelCompany extends IPieModelAdmin
         $query = $db->getQuery(true);
         $query->delete('#__ipie_subsector_company')->where('company_id=' . $id);
         $db->setQuery($query);
-        $db->execute();
+        if (!$db->execute()) {
+       	    $this->setError($db->getErrorMsg());
+            return false;
+        }
         // salva correnti
         if (count($sectors) > 0) {
             $query = $db->getQuery(true);
@@ -177,7 +191,10 @@ class IPieModelCompany extends IPieModelAdmin
         $query = $db->getQuery(true);
         $query->delete('#__ipie_factor_company')->where('company_id=' . $id);
         $db->setQuery($query);
-        $db->execute();
+        if (!$db->execute()) {
+       	    $this->setError($db->getErrorMsg());
+            return false;
+        }
         // salva correnti
         if (count($factors) > 0) {
             $query = $db->getQuery(true);

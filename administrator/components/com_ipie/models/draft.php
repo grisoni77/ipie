@@ -69,6 +69,8 @@ class IPieModelDraft extends IPieModelAdmin
     
     public function approve($draft_id)
     {
+        $db = JFactory::getDbo();
+        $db->transactionStart();
         // set draft state to approved
         $item = $this->getItem($draft_id);
         $item->state = 'editable';
@@ -76,7 +78,7 @@ class IPieModelDraft extends IPieModelAdmin
         parent::save($item->getProperties());
         // load data to be store in company record
         $data = $item->getProperties();
-        $data['sectors'] = $this->getSubSectorsIds($draft_id);
+        $data['sectors'] = $this->getSubSectorsIds($draft_id);        
         // copia immagine da draft
         if (!file_exists($this->getLogoPath().$data['logo'])) {
             JFile::copy($this->getLogoDraftPath().$data['logo'], $this->getLogoPath().$data['logo']);
@@ -84,7 +86,15 @@ class IPieModelDraft extends IPieModelAdmin
         }
         // get company model
         $model = JModel::getInstance('Company', 'IPieModel');
-        return $model->save($data, false);
+        if (!$model->save($data, false)) {
+            print_r($db);
+            $this->setError($model->getError());
+            $db->transactionRollback();
+            die();
+            return false;
+        }
+        $db->transactionCommit();
+	return true;        
     }
     
     public function reject($draft_id)

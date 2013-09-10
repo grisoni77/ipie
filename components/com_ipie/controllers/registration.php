@@ -110,7 +110,7 @@ class IPieControllerRegistration extends JControllerForm
             $app->setUserState('com_ipie.registration.data', $requestData);
 
             // Redirect back to the registration screen.
-            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration', false));
+            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration&layout=edit', false));
             return false;
         }
 
@@ -124,7 +124,7 @@ class IPieControllerRegistration extends JControllerForm
 
             // Redirect back to the edit screen.
             $this->setMessage(JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model->getError()), 'warning');
-            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration', false));
+            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration&layout=edit', false));
             return false;
         }
 

@@ -42,7 +42,7 @@ class IPieSiteModelCompanies extends JModelList
         $query = $db->getQuery(true);
         // Select some fields
         $query
-                ->select('c.company_id AS id, c.company_id, c.name')
+                ->select('DISTINCT c.company_id AS id, c.company_id, c.name')
                 ->select('c.published, ci.name as city, c.address, p.name as province')
                 ->from('#__ipie_company c')
                 ->join('INNER', '#__ipie_city ci ON (ci.city_id=c.city_id)')

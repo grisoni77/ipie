@@ -14,6 +14,9 @@ function IPieBuildRoute(&$query)
     //require_once JPATH_SITE. '/components/'.CNL.'/helpers/router.php';
     //$query['Itemid'] = IPieHelperRouter::getItemid(array());
     
+    $menu = JFactory::getApplication()->getMenu('site');
+    $item = $menu->getItem($query['Itemid']);
+    
     $segments = array();
     if (isset($query['view'])) {
         switch ($query['view'])

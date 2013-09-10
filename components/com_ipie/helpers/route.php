@@ -147,8 +147,9 @@ class IPieHelperRoute
         }
         if (!isset($params['Itemid']))
         {
-            // cerco itemid legato ad elenco eletti
-            $query = array('view' => 'sector', 'filter_sector' => $id);
+            // cerco itemid legato ad elenco 
+//            $query = array('view' => 'sector', 'filter_sector' => $id);
+            $query = array('view' => 'companies');
             $link .= '&Itemid=' . self::getItemid($query);
         }
         return $link;

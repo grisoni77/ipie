@@ -43,7 +43,7 @@ class IPieControllerRegistration extends JControllerForm
     {
         $item = $model->getItem();
         $id = $item->get('registration_id');
-        //$this->notifyUser($id, $item);
+        $this->notifyUser($id, $item);
     }
 
     /**

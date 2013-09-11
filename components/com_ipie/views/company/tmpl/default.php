@@ -1,4 +1,6 @@
 <?php
+JHtml::_('behavior.modal');
+
 $item = $this->item;
 
 // link print
@@ -54,7 +56,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
             <br />
             
             <?php echo $item->address ?> - <?php echo $item->cap ?> <?php echo $item->city ?> (<?php echo strtoupper($item->province_code) ?>)                        
-            <a href="/it/aziende-settore/azienda/?id=2773&amp;layout=default_mappa&amp;tmpl=component" 
+            <a href="index.php?option=com_ipie&view=map&tmpl=component" 
                                                                         class="modal" title="Apri mappa in modale"
                                                                         rel="{handler: 'iframe', size: {x: 800, y: 500}}" >
                 <img class="mappa" src="/images/google.gif" alt="Apri mappa in modale" width="26" height="27" />

@@ -10,7 +10,7 @@ function initialize() {
 
     var myOptions = {
         center: new google.maps.LatLng(45.0781, 7.6761),
-        zoom: 11,
+        zoom: 8,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -54,39 +54,9 @@ function initialize() {
 
 var markers = [];
 
-function placeMarker(item)
-{
-    // init infowindow
-    var contentString = '<div id="info_content">' +
-            '<strong>' + item.name + '</strong>' +
-            '<div id="bodyContent">' +
-            '<p>' + item.address + '</p>' +
-            '<p><a href="' + item.web + '">Sito web</a></p>' +
-            '</div>' +
-            '</div>';
-
-    var infowindow = new google.maps.InfoWindow({
-        content: contentString
-    });
-
-    // init marker
-    var marker = new google.maps.Marker({
-        position: new google.maps.LatLng(item.lat, item.lng),
-        map: map,
-        title: item.name
-    });
-
-    markers.push(marker);
-
-    google.maps.event.addListener(marker, 'click', function() {
-        map.setZoom(12);
-        infowindow.open(map, marker);
-    });
-}
-
 function codeAddress(item) {
     var address = item.address + ' Piemonte Italia';
-    console.log(address);
+    //console.log(address);
     geocoder.geocode({'address': address}, function(results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             //map.setCenter(results[0].geometry.location);
@@ -114,7 +84,7 @@ function codeAddress(item) {
             markers.push(marker);
 
             google.maps.event.addListener(marker, 'click', function() {
-                map.setZoom(12);
+                //map.setZoom(12);
                 infowindow.open(map, marker);
             });
 

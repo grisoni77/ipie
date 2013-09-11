@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 
-	<fieldset name="Ipie"
-		label=""
+	<fieldset name="mail"
+		label="Configurazione Posta"
 		description=""
 	>
+            <field name="sender_email"
+                type="text"
+                label="Email Mittente"
+                description=""
+                />
+                
+            <field name="sender_name"
+                type="text"
+                label="Nome Mittente"
+                description=""
+                />
+                
+            <field name="system_email"
+                type="text"
+                label="Email UnionCamere"
+                description="Email usata per la ricezione delle notifiche"
+                />
                 
 	</fieldset>
 

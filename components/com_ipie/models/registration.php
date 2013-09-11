@@ -47,5 +47,33 @@ class IPieSiteModelRegistration extends IPieModelAdmin
 
         return $this->data;
     }
+//
+//    public function validate($form, $data, $group = null)
+//    {
+//        // Filter and validate the form data.
+//        $data = $form->filter($data);
+//        $return = $form->validate($data, $group);
+//
+//        // Check for an error.
+//        if ($return instanceof Exception)
+//        {
+//            $this->setError($return->getMessage());
+//            return false;
+//        }
+//
+//        // Check the validation results.
+//        if ($return === false)
+//        {
+//            // Get the validation messages from the form.
+//            foreach ($form->getErrors() as $message)
+//            {
+//                $this->setError(JText::_($message));
+//            }
+//
+//            return false;
+//        }
+//
+//        return $data;
+//    }
 
 }

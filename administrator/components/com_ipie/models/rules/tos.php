@@ -24,7 +24,7 @@ class JFormRuleTos extends JFormRule {
      */
     public function test(&$element, $value, $group = null, &$input = null, &$form = null)
     {
-        return 1 == $input->get('tos');
+        return !empty($value) && 1 == $value;
     }
 
 }

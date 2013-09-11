@@ -34,7 +34,9 @@ modules/*
 
 templates/*
 !templates/ipie/
+!templates/ipie_bo/
 
 language/it-IT/*
 !/language/it-IT/it-IT.com_ipie.ini
+language/en-GB/*
 !/language/en-GB/en-GB.com_ipie.ini

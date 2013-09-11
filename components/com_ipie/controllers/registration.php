@@ -39,38 +39,6 @@ class IPieControllerRegistration extends JControllerForm
     }
 
 
-    protected function postSaveHook(\JModel &$model, $validData = array())
-    {
-        $item = $model->getItem();
-        $id = $item->get('registration_id');
-        $this->notifyUser($id, $item);
-    }
-
-    /**
-     * Usato per mandare email di notifica dopo richiesta registrazione
-     * @param JModel $model
-     * @param boolean $validData
-     */
-    protected function notifyUser($id, $data)
-    {
-        $app = JFactory::getApplication();
-        $params = JComponentHelper::getParams('com_ipie');
-
-        $hash = md5($data->name . $data->surname . $data->email);
-        $body = JText::sprintf('REGISTRATION_BODY', JRoute::_(JURI::root() . 'index.php?option=com_bnb&task=registration.complete&id=' . $id . '&hash=' . $hash, 'Complete now your registration!'));
-        //echo $body;
-
-        $mail = JFactory::getMailer();
-
-        $mail->addRecipient($data->email);
-        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Complete your registration on BnB'));
-        $mail->setBody($body);
-        //echo $body;die();
-        $sent = $mail->Send();
-    }
-
     public function save()
     {
         // Check for request forgeries.
@@ -95,21 +63,26 @@ class IPieControllerRegistration extends JControllerForm
         if ($data === false) {
             // Get the validation messages.
             $errors = $model->getErrors();
-
+            
             // Push up to three validation messages out to the user.
+            $errmsg = array();
             for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
                 if ($errors[$i] instanceof Exception) {
-                    $app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                    //$app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                    $errmsg[] = $errors[$i]->getMessage();
                 }
                 else {
-                    $app->enqueueMessage($errors[$i], 'warning');
+                    //$app->enqueueMessage($errors[$i], 'warning');
+                    $errmsg[] = $errors[$i];
                 }
             }
 
             // Save the data in the session.
+            $app->setUserState('com_ipie.registration.errors', $errmsg);
             $app->setUserState('com_ipie.registration.data', $requestData);
 
             // Redirect back to the registration screen.
+            //$app->enqueueMessage(JText::_('COM_IPIE_REGISTRATION_FAILED'), 'warning');
             $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration&layout=edit', false));
             return false;
         }
@@ -123,18 +96,21 @@ class IPieControllerRegistration extends JControllerForm
             $app->setUserState('com_ipie.registration.data', $data);
 
             // Redirect back to the edit screen.
-            $this->setMessage(JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $model->getError()), 'warning');
+            $this->setMessage(JText::sprintf('IPIE_REGISTRATION_SAVE_FAILED', $model->getError()), 'warning');
             $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration&layout=edit', false));
             return false;
         }
 
         // Flush the data from the session.
-        $app->setUserState('com_users.registration.data', null);
+        $app->setUserState('com_ipie.registration.data', null);
 
         // Redirect to the profile screen.
-        $this->setMessage(JText::_('COM_USERS_REGISTRATION_SAVE_SUCCESS'));
+        //$this->setMessage(JText::_('IPIE_REGISTRATION_SAVE_SUCCESS'));
         $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=registration&layout=success', false));
-
+        
+        // notifica unioncamere
+		IPieHelperMailer::notifySystemOnRegistration($data);
+        
         return true;
     }
 

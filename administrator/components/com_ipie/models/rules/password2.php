@@ -25,9 +25,9 @@ class JFormRulePassword2 extends JFormRule {
     public function test(&$element, $value, $group = null, &$input = null, &$form = null)
     {
         $password = $input->get('password');
-        $password2 = $input->get('password');
+        $password2 = $input->get('password2');
         if ( $password != $password2
-             || empty($password) ) {
+             || empty($password) || empty($password2) ) {
             return false;
         }
         return true;

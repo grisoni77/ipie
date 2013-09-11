@@ -21,6 +21,17 @@ function IPieBuildRoute(&$query)
     if (isset($query['view'])) {
         switch ($query['view'])
         {
+            case 'registration':
+                if ($item->query['view'] != 'registration') {
+                    $segments[] = 'registration';
+                }
+                if ('success' == $query['layout']) {
+                    $segments[] = 'success';
+                }
+                unset($query['view']);
+                unset($query['layout']);
+                break;
+                
             case 'companies':
                 $segments[] = 'companies';
                 unset($query['view']);
@@ -53,6 +64,16 @@ function IPieParseRoute($segments)
     $query = array();
     switch ($segments[0])
     {
+        case 'registration':
+            $query['view'] = 'registration';
+            $query['layout'] = 'edit';
+            break;
+        
+        case 'success':
+            $query['view'] = 'registration';
+            $query['layout'] = 'success';
+            break;
+        
         case 'companies':
             $query['view'] = 'companies';
             break;

@@ -41,7 +41,7 @@ class IPieViewList extends IPieView {
      */
     protected function addToolBar()
     {
-        JToolBarHelper::title(JText::sprintf('%s List', ucfirst($this->_plural)));
+        JToolBarHelper::title(JText::_(sprintf('%s List', ucfirst($this->_plural))));
         JToolBarHelper::deleteList(
             JText::sprintf('Are you sure you want to delete this %s?', $this->_plural), 
             $this->_plural . '.delete'

@@ -15,7 +15,7 @@ class IPieViewRegistration extends IPieViewForm
     {
         $input = JFactory::getApplication()->input;
         $input->set('hidemainmenu', true);
-        JToolBarHelper::title(JText::sprintf('Approve %s', $this->_singular));
+        JToolBarHelper::title(JText::_('Approve registration'));
         JToolBarHelper::save($this->_singular . '.approve', 'Approva');
         JToolBarHelper::cancel($this->_singular . '.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');
     }

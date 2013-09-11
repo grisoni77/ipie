@@ -45,7 +45,8 @@ class IPieViewForm extends IPieView {
         $table = $this->getModel()->getTable();
         $id = $table->getkeyName();
         $isNew = ($this->item->$id == 0);
-        JToolBarHelper::title($isNew ? JText::sprintf('Create %s', $this->_singular) : JText::sprintf('Edit %s', $this->_singular));
+        JToolBarHelper::title($isNew ? JText::_(sprintf('Create %s', $this->_singular)) 
+            : JText::_(sprintf('Edit %s', $this->_singular)));
         JToolBarHelper::save($this->_singular . '.save');
         JToolBarHelper::apply($this->_singular . '.apply');
         JToolBarHelper::cancel($this->_singular . '.cancel', $isNew ? 'JTOOLBAR_CANCEL' : 'JTOOLBAR_CLOSE');

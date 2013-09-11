@@ -12,6 +12,8 @@
             default=""
             label="Nome azienda"
             required="true"
+            size="60" 
+            placeholder="inserire il nome completo dell'azienda da registrare"
         />
         
         <field 
@@ -22,6 +24,7 @@
             description="Partita IVA"
             required="true" 
             maxlength="11"
+            size="60" 
         />
         
         <field 
@@ -51,7 +54,8 @@
             required="true"
             validate="email"
             unique="true"
-            message="This mail is already used by another user"
+            message="email::This mail is already used by another user"
+            size="60" 
         />
         
         <field 
@@ -62,6 +66,7 @@
             required="true"
             validate="username"
             message="Choose another user name. This one is already in use"
+            size="60" 
         />
         
         <field 
@@ -70,6 +75,7 @@
             default=""
             label="Password"
             required="true"
+            size="60" 
         />
         
         <field 
@@ -79,7 +85,8 @@
             label="Ripeti Password"
             required="true"
             validate="password2"
-            message="Entered passwords do not match"
+            message="password2::Entered passwords do not match"
+            size="60" 
         />
         
         <field

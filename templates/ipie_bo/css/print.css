@@ -1,0 +1,136 @@
+html {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	text-align: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 80%;
+	margin: 0px;
+	padding: 0px;
+	color: #333;
+	width: 100%;
+	}
+
+div, p, span,pre, input, form, h1, h2, h3, h4, h5, h6, table, tr, td, th {
+	text-align: left;
+	margin: 0px;
+	padding: 0px 0px 4px 0px;
+	border: 0px;
+	}
+	
+a { text-decoration:none; color: #999!important;}
+img {
+	border: 0px;
+}
+	
+table {
+	width: 90%; 
+	border: 1px solid #EBEBEB;
+	border-collapse: collapse;
+	margin: 8px 0px;
+	}
+caption {
+	font-weight: bold;
+	text-align: left;
+}	
+	
+td, th {
+	padding: 8px;
+	border: 1px solid #EBEBEB;
+	border-collapse: collapse;
+	}
+
+dl {	margin: 0px; padding: 0px; }
+dt {	font-weight: bold; margin-bottom: 3px;}
+dd	{	margin:0px; }
+
+h3, h4, h5, h6 { margin-top: 1em; }
+h1 { font-size: 150%; color: #555; border-bottom: 1px solid #999; padding-bottom: 5px; margin-bottom: 5px;}
+h2 { font-size: 140%; color: #999; border-bottom: 1px dashed #999; margin-bottom: 5px;}
+h3 { font-size: 130%; color: #999; }
+h4 { font-size: 120%; }
+h5 { font-size: 110%; }
+h6 { font-size: 100%; }
+
+ul, ol {
+	margin-top: 4px;
+	line-height: 1.2em;
+	}
+	
+li {
+	margin-bottom: 0.6em;
+	list-style: circle;
+	}
+
+input, textarea	{
+	border: 1px solid #555; 
+		}
+		textarea	{
+	width: 98%;
+		}
+
+span.piccolo {
+	font-size: 0.85em!important;
+	font-weight: normal!important;
+}
+
+p.ko {
+	border: 1px dashed #ff0000;
+	text-align: center;
+	margin-top: 10px;
+	float: left;  width: 99%;
+	padding: 15px 0px 15px 0px;
+	font-size: 1.1em;
+	font-weight: bold;
+	background-color: #fff;
+}
+p.ok {
+	border: 1px dashed #00CC33;
+	text-align: center;
+	margin-top: 10px;
+	float: left;  width: 99%;
+	padding: 15px 0px 15px 0px;
+	font-size: 1.1em;
+	font-weight: bold;
+	background-color: #fff;
+}
+p.si {
+	border: 1px dashed #ff9933;
+	text-align: center;
+	margin-top: 10px;
+	float: left;  width: 99%;
+	padding: 15px 0px 15px 0px;
+	font-size: 1.1em;
+	font-weight: bold;
+	background-color: #fff;
+}
+
+#top, .menu-nav, #ja-mainnav, #pathway, #sidebar-left, #sidebar-right, hr, .hidden, .pagination, .pagescounter, .buttonheading,
+#logos, #ricerca, .itp-socialbuttons-mod, ul.actions, .qlform .author{
+	display:none;
+}
+
+#footer {
+   clear: both; width: 100%;
+	font-size: 0.90em;
+	}			
+	.moduletable_footer { clear: both; width: 100%; border-top: 1px solid #555;
+	padding-top: 5px;
+		
+	}	
+
+/*|||classi per banali flottaggi |||*/
+.sinistra { float: left; }
+.destra { float: right; }
+.centro { text-align: center!important }
+.imgleft img, img.imgleft { float: left; padding-right: 5px; }
+.imgright img, img.imgright { float: right!important; padding-left: 5px; }	
+
+/*classe per | totalmente invisibile*/
+.pipe {
+	display: none;
+	}
+
+

@@ -85,9 +85,6 @@ $app = JFactory::getApplication();
                     </div> <!-- fine body_outer -->
                 </div><!-- fine main -->
                 <div id="footer">
-                    <?php if ($this->countModules('social')) { ?>
-                        <jdoc:include type="modules" name="social"  style="nea" headerLevel="2" />
-                    <?php } ?><!-- end footer -->
                     <?php if ($this->countModules('footer')) { ?>
                         <jdoc:include type="modules" name="footer"  style="nea" headerLevel="2" />
                     <?php } ?><!-- end footer -->

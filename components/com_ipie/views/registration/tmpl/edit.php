@@ -22,9 +22,10 @@ function isValid($field, $errors) {
 }
 ?>
 
-<h2>Richiesta di registrazione aziende</h2>
-<p>Il sito ? realizzato da <a href="http://www.pie.camcom.it/" class="blank" title="[nuova finestra]">Unioncamere Piemonte</a> con lo scopo di dare maggiore visibilit? alle aziende che hanno partecipato al ‘<a href="http://www.pie.camcom.it/Page/t04/view_html?idp=1240" class="blank" title="[nuova finestra]">Repertorio delle imprese innovative della Province di Alessandria, Asti, Biella, Cuneo, Novara, Verbano Cusso Ossola, Vercelli</a>’.</p>
-<p>Al fine di registrare l'azienda al sito ? necessario <strong>compilare tutti i campi del modulo sottostante e accettare l'informativa sul trattamento dei dati personali</strong>.</p> 
+<h2><?php echo JText::_('REGISTRATION_TITLE') ?></h2>
+<?php echo JText::_('REGISTRATION_INTRO_1') ?>
+<?php echo JText::_('REGISTRATION_INTRO_2') ?>
+
 
 <form action="<?php echo JRoute::_('index.php?option=' . CNL . '&layout=edit&id=' . (int) $this->item->$key_name); ?>"
       class="form-validate" method="post" name="adminForm" id="registration-form">

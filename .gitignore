@@ -38,5 +38,8 @@ templates/*
 
 language/it-IT/*
 !/language/it-IT/it-IT.com_ipie.ini
+!/language/it-IT/com_ipie_email_tpl
 language/en-GB/*
 !/language/en-GB/en-GB.com_ipie.ini
+!/language/en-GB/com_ipie_email_tpl
+

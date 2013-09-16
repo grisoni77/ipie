@@ -33,7 +33,7 @@ class IPieControllerDraft extends JControllerForm
         $user = JFactory::getUser();
         $draft_id = $data[$key];
         $model = $this->getModel('Draft');
-        return $model->isDraftOwner($draft_id, $user->id);
+        return $model->isDraftOwner($draft_id, $user->id);// && $model->isEditable($draft_id);
     }
 
     public function allowSave($data, $key = 'draft_id')
@@ -41,7 +41,7 @@ class IPieControllerDraft extends JControllerForm
         $user = JFactory::getUser();
         $draft_id = $data[$key];
         $model = $this->getModel('Draft');
-        return $model->isDraftOwner($draft_id, $user->id);
+        return $model->isDraftOwner($draft_id, $user->id) && $model->isEditable($draft_id);
     }
 
     /**
@@ -238,6 +238,11 @@ class IPieControllerDraft extends JControllerForm
         $id = JRequest::getInt('id');
         $model = $this->getModel('Draft');
         $context = "$this->option.edit.$this->context";
+        
+        if (!$model->isEditable($id)){
+            $this->setRedirect(JRoute::_('index.php?option=com_ipie&task=draft.pending&id='.$id, false));
+            return false;
+        }
         
         if ($model->setPending($id)) {
             $this->notifyUsers($id, $data);

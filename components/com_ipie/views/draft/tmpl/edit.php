@@ -34,8 +34,13 @@ print_r($this->item);
 <script type="text/javascript">
     var IPIE = IPIE || {};
     IPIE.submitDraft = function(task) {
+    	if (task == 'draft.sendForApprovation') {
+        	;
+        	if (!new FormValidator('draft-form').validate()) {
+        		return false;
+        	}
+        }
         jQuery('#draft-task').val(task);
         jQuery('#draft-form').submit();
     }
 </script>
-

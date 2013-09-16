@@ -50,7 +50,7 @@ class IPieController extends JController
                 if (!empty($draft_id)) {
                     $model = $this->getModel('Draft');
                     $user = JFactory::getUser();
-                    return $model->isDraftOwner($draft_id, $user->id);
+                    return $model->isDraftOwner($draft_id, $user->id) && $model->isEditable($draft_id);
                 } else {
                     // non il massimo...
                     JFactory::getApplication()

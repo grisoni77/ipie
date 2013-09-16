@@ -20,3 +20,10 @@ $controller->execute($task);
  
 // Redirect if set by the controller
 $controller->redirect();
+
+//IPieHelperMailer::notifyOnCompanyApproval(array(
+//    'email' => 'cristiano.cucco@gmail.com',
+//    'username' => 'username',
+//    'password' => 'password',
+//    'login_link' => JRoute::_(JURI::root().'index.php?option=com_users&view=login'),
+//    ));

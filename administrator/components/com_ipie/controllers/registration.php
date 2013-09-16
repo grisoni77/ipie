@@ -14,7 +14,6 @@ class IPieControllerRegistration extends IPieControllerForm
         $app = JFactory::getApplication();
         $id = JRequest::getInt('id');
         $post = JRequest::getVar('jform', array(), 'post', 'array');
-        print_r($post);
         // Save the data in the session.
         $context = CNL . '.edit.' . $this->_singular;
         $app->setUserState($context . '.data', $post);
@@ -58,7 +57,12 @@ class IPieControllerRegistration extends IPieControllerForm
             $app->setUserState($context . '.data', null);
             
             // send email notification
-            $this->sendApprovalNotification($data);
+            IPieHelperMailer::notifyOnRegistrationApproval(array(
+                'email' => $post['email'],
+                'username' => $post['username'],
+                'password' => $post['password'],
+                'login_link' => JRoute::_(JURI::root().'index.php?option=com_users&view=login'),
+            ));
 
             $this->setRedirect('index.php?option=com_ipie&view=registrations', 'Registrazione approvata correttamente');
         }
@@ -104,9 +108,51 @@ class IPieControllerRegistration extends IPieControllerForm
         return $user->id;
     }
 
-    public function sendApprovalNotification($data)
+    public function refuse()
     {
-        IPieHelperMailer::notifyOnCompanyApproval($data);
+        $app = JFactory::getApplication();
+        $id = JRequest::getInt('id');
+        $post = JRequest::getVar('jform', array(), 'post', 'array');
+        // Save the data in the session.
+        $context = CNL . '.edit.' . $this->_singular;
+        $app->setUserState($context . '.data', $post);
+        
+        // creo l'utente
+        try {
+            IPieHelper::startTransaction();
+                    
+            // cambia stato a registration
+            $rmodel = $this->getModel();
+            $post['state'] = 'refused';
+            if (!$rmodel->save($post)) {
+                $app->redirect('index.php?option=com_ipie&task=registration.edit&id='.$id, $rmodel->getError());
+                JError::raiseError(400, $model->getError());
+            }
+            
+            IPieHelper::commitTransaction();            
+            
+            // cancella dati da sessione
+            $app->setUserState($context . '.data', null);
+            
+            // send email notification
+            IPieHelperMailer::notifyOnRegistrationRefusal(array(
+                'email' => $post['email'],
+                'name' => $post['name'],
+            ));
+
+            $this->setRedirect('index.php?option=com_ipie&view=registrations', 'Registrazione rifiutata correttamente');
+        }
+        catch (JDatabaseException $e) {
+            IPieHelper::rollbackTransaction();
+            $app->redirect('index.php?option=com_ipie&view=registration&layout=edit&id='.$id, $e->getMessage());
+            //JError::raiseError(400, $e->getMessage());
+        }
+        catch (Exception $e) {
+            IPieHelper::rollbackTransaction();
+            $app->redirect('index.php?option=com_ipie&view=registration&layout=edit&id='.$id, $e->getMessage());
+            //JError::raiseError(400, $e->getMessage());
+        }
     }
+    
 
 }

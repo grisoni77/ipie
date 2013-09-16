@@ -23,7 +23,7 @@ class IPieSiteModelDraft extends IPieModelDraft
                 ->where('c.user_id = ' . $user_id);
         ;
         $db->setQuery($query);
-        echo $db->replacePrefix($query);
+        //echo $db->replacePrefix($query);
         return $db->loadResult();
     }
 
@@ -62,6 +62,7 @@ class IPieSiteModelDraft extends IPieModelDraft
                 ->where('d.draft_id = ' . $draft_id);
         ;
         $db->setQuery($query);
+        //echo $db->replacePrefix($query);die();
         $state = $db->loadResult();
         return $state == 'editable';
     }

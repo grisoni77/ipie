@@ -106,16 +106,60 @@ class IPieHelperMailer
         // send mail
     }
     
+    static public function notifySystemOnDraftSubmission($data)
+    {
+        $app = JFactory::getApplication();
+        $params = JComponentHelper::getParams('com_ipie');
+
+        $body = self::parseTemplate('notifySystemOnDraftSubmission', $data);
+        //echo $body;
+
+        $mail = self::getMailer();
+        $mail->IsHTML();
+        $mail->addRecipient($params->get('system_email'));
+        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSubject(JText::_('A company submitted a new draft copy to be approved'));
+        $mail->setBody($body);
+        //echo $body;die();
+        $sent = $mail->Send();
+    }
+    
     static public function notifyOnDraftApproval($data)
     {
-        $mailer = self::getMailer();
-        // send mail
+        $app = JFactory::getApplication();
+        $params = JComponentHelper::getParams('com_ipie');
+
+        $body = self::parseTemplate('notifyOnDraftApproval', $data);
+        //echo $body;
+
+        $mail = self::getMailer();
+        $mail->IsHTML();
+        $mail->addRecipient($data['email']);
+        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSubject(JText::_('Your draft submission has been accepted'));
+        $mail->setBody($body);
+        //echo $body;die();
+        $sent = $mail->Send();
     }
     
     static public function notifyOnDraftRejection($data)
     {
-        $mailer = self::getMailer();
-        // send mail
-        JFactory::getApplication()->enqueueMessage($data['reason']);
+        $app = JFactory::getApplication();
+        $params = JComponentHelper::getParams('com_ipie');
+
+        $body = self::parseTemplate('notifyOnDraftRejection', $data);
+        //echo $body;
+
+        $mail = self::getMailer();
+        $mail->IsHTML();
+        $mail->addRecipient($data['email']);
+        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSubject(JText::_('Your draft submission has been refused'));
+        $mail->setBody($body);
+        //echo $body;die();
+        $sent = $mail->Send();
     }
 }

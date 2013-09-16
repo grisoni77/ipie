@@ -13,7 +13,7 @@
             label="Nome azienda"
             required="true"
             size="60" 
-            placeholder="inserire il nome completo dell'azienda da registrare"
+            placeholder="name::inserire il nome completo dell'azienda da registrare"
         />
         
         <field 
@@ -25,6 +25,7 @@
             required="true" 
             maxlength="11"
             size="60" 
+            message="piva::inserire partita IVA"
         />
         
         <field 
@@ -34,6 +35,7 @@
             label="Provincia"
             description="Provincia"
             required="true" 
+            message="province_id::selezionare la provincia"
         />
         
         <field 
@@ -44,6 +46,7 @@
             description="Città"
             required="true" 
             provfld="province_id" 
+            message="city_id::selezionare la città"
         />
                 
         <field 
@@ -65,7 +68,7 @@
             label="Nome utente"
             required="true"
             validate="username"
-            message="Choose another user name. This one is already in use"
+            message="username::choose another user name. This one is already in use"
             size="60" 
         />
         
@@ -96,7 +99,8 @@
             label="PLG_USER_PROFILE_FIELD_TOS_LABEL"
             description="PLG_USER_PROFILE_FIELD_TOS_DESC"
             validate="tos"
-            message="You must accept terms and conditions"
+            required="true"
+            message="tos::You must accept terms and conditions"
         >
             <option value="1">PLG_USER_PROFILE_OPTION_AGREE</option>
             <option value="">JNO</option>

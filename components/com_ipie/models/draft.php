@@ -81,6 +81,17 @@ class IPieSiteModelDraft extends IPieModelDraft
         }
         return true;
     }
-
+    
+    
+    public function getFactors($draft_id)
+    {
+        if (empty($draft_id)) {
+            JError::raiseError(400, JText::_('Draft ID not valid in model Draft '.__LINE__));
+        }
+        $table = $this->getTable();
+        $table->load($draft_id);
+        $model = JModel::getInstance('Company', 'IPieSiteModel');
+        return $model->getFactors($table->company_id);
+    }
     
 }

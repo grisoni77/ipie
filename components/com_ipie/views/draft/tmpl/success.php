@@ -1,0 +1,2 @@
+<p class="ok">Gentile utente, la sua scheda è stata inoltrata con successo a Unioncamere Piemonte.<br>
+La ringraziamo e le comunichiamo che riceverà quanto prima un messaggio di conferma del profilo.</p>

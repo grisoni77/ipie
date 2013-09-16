@@ -44,6 +44,16 @@ function IPieBuildRoute(&$query)
                 unset($query['id']);
                 break;
                 
+            case 'draft':
+                $segments[] = 'draft';
+                if (isset($query['id'])) 
+                {
+                    $segments[] = $query['id'];
+                    unset($query['id']);
+                }
+                unset($query['view']);
+                break;
+                
             case 'sector':
                 if (isset($query['filter_sector'])) {
                     $segments[] = 'sector';
@@ -76,6 +86,13 @@ function IPieParseRoute($segments)
         
         case 'companies':
             $query['view'] = 'companies';
+            break;
+        
+        case 'draft':
+            $query['view'] = 'draft';
+            if (isset($segments[1])) {
+                $query['id'] = $segments[1];
+            }
             break;
         
         case 'sector':

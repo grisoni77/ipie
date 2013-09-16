@@ -66,7 +66,7 @@ $app = JFactory::getApplication();
                 </div><!-- fine testata -->              
 
 
-                <div id="main-<?php print $cols; ?>">
+                <div id="main">
                     <div id="body_outer">
                         <?php if (0 && $this->countModules('breadcrumb')) { ?>
                             <div id="pathway">
@@ -74,8 +74,8 @@ $app = JFactory::getApplication();
                             </div>
                             <hr /> 
                         <?php } ?>
-                        <jdoc:include type="message" />
                         <jdoc:include type="component" />
+                        <!--<jdoc:include type="message" />-->
                         <?php if ($this->countModules('bottom')) { ?>
                             <div id="bottom">
                                 <jdoc:include type="modules" name="bottom"  style="none" headerLevel="2" />

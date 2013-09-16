@@ -9,9 +9,10 @@ $key_name = 'registration_id';
 
 //print_r($this->form->getErrors());
 $app = JFactory::getApplication();
-$rawerrors = $app->getUserState('com_ipie.registration.errors', $errmsg);
+$rawerrors = $app->getUserState('com_ipie.registration.errors');
 $app->setUserState('com_ipie.registration.errors', null);
 $errors = array();
+if (count($rawerrors))
 foreach ($rawerrors as $err) 
 {
     list($field, $message) = explode('::', $err);
@@ -63,28 +64,28 @@ function isValid($field, $errors) {
             <th><?php echo $field->label ?></th>
             <td><input name="<?php echo $field->name ?>" type="text" id="jform_email" size="60" class="required validate-email"
                        value="<?php echo $field->value ?>"
-                       placeholder="inserire un indirizzo e-mail valido" /></td>
+                       placeholder="<?php echo JText::_("inserire un indirizzo e-mail valido") ?>" /></td>
         </tr>
         <?php $field = $this->form->getField('username') ?>
         <tr <?php echo isValid('username', $errors) ? '' : 'class="errore"' ?>>
             <th><?php echo $field->label ?></th>
             <td><input name="<?php echo $field->name ?>" type="text" id="jform_username" size="60" class="required validate-username"
                        value="<?php echo $field->value ?>"
-                       placeholder="scegliere un nome utente" /></td>
+                       placeholder="<?php echo JText::_("scegliere un nome utente") ?>" /></td>
         </tr>
         <?php $field = $this->form->getField('password') ?>
         <tr <?php echo isValid('password', $errors) ? '' : 'class="errore"' ?>>
             <th><?php echo $field->label ?></th>
             <td><input name="<?php echo $field->name ?>" type="password" id="jform_password" size="60" class="required" 
                        value="<?php echo $field->value ?>"
-                       placeholder="scegliere una password (min. 8 caratteri)" /></td>
+                       placeholder="<?php echo JText::_("scegliere una password (min. 8 caratteri)") ?>" /></td>
         </tr>
         <?php $field = $this->form->getField('password2') ?>
         <tr <?php echo isValid('password2', $errors) ? '' : 'class="errore"' ?>>
             <th><?php echo $field->label ?></th>
             <td><input name="<?php echo $field->name ?>" type="password" id="jform_password2" size="60" class="required validate-password2"
                        value="<?php echo $field->value ?>"
-                       placeholder="confermare la password" /></td>
+                       placeholder="<?php echo JText::_("confermare la password") ?>" /></td>
         </tr>
         <?php $field = $this->form->getField('tos') ?>
         <tr <?php echo isValid('tos', $errors) ? '' : 'class="errore"' ?>>
@@ -94,7 +95,8 @@ function isValid($field, $errors) {
                        />
                 <label for="jform_tos">dichiaro di aver preso visione e accettato l'<a href="#">informativa sul trattamento dei dati personali</a></label></td>
         </tr>
-        <?php $field = $this->form->getField('piva') ?>
+        
+        
         <tr>
             <td colspan="2" class="destra">
                 <input type="reset" class="button validate" name="cancella" id="cancella" value="<?php echo JText::_('RESET'); ?>" />   

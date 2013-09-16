@@ -64,6 +64,9 @@ class IPieControllerDraft extends JControllerForm
         $table = $model->getTable();
         $cid = JRequest::getVar('cid', array(), 'post', 'array');
         $context = "$this->option.edit.$this->context";
+        
+        $success = $app->getUserState($context . '.success');
+        $app->setUserState($context . '.success', null);
 
         // Determine the name of the primary key for the data.
         if (empty($key))
@@ -127,6 +130,7 @@ class IPieControllerDraft extends JControllerForm
                 // Check-out succeeded, push the new record id into the session.
                 $this->holdEditId($context, $recordId);
                 $app->setUserState($context . '.data', null);
+                $app->setUserState($context . '.success', $success);
 
                 $this->setRedirect(
                         JRoute::_(
@@ -182,25 +186,30 @@ class IPieControllerDraft extends JControllerForm
         $data = $model->validate($form, $requestData);
 
         // Check for validation errors.
-        if ($data === false) {
+        if ($data === false) 
+        {
             // Get the validation messages.
             $errors = $model->getErrors();
 
             // Push up to three validation messages out to the user.
+            $errmsg = array();
             for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
                 if ($errors[$i] instanceof Exception) {
-                    $app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                    //$app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                    $errmsg[] = $errors[$i]->getMessage();
                 }
                 else {
-                    $app->enqueueMessage($errors[$i], 'warning');
+                    //$app->enqueueMessage($errors[$i], 'warning');
+                    $errmsg[] = $errors[$i];
                 }
             }
 
             // Save the data in the session.
-            $app->setUserState('com_ipie.draft.data', $requestData);
+            $app->setUserState($context.'.data', $requestData);
+            $app->setUserState('com_ipie.draft.errors', $errmsg);
 
             // Redirect back to the registration screen.
-            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=draft', false));
+            $this->setRedirect(JRoute::_('index.php?option=com_ipie&view=draft&layout=edit&id='.$requestData['draft_id'], false));
             return false;
         }
 
@@ -210,7 +219,7 @@ class IPieControllerDraft extends JControllerForm
         // Check for errors.
         if ($return === false) {
             // Save the data in the session.
-            $app->setUserState('com_ipie.draft.data', $data);
+            $app->setUserState($context.'.data', $data);
 
             // Redirect back to the edit screen.
             $this->setMessage(JText::sprintf('Salvataggio bozza fallito', $model->getError()), 'warning');
@@ -220,6 +229,7 @@ class IPieControllerDraft extends JControllerForm
 
         // Flush the data from the session.
         $app->setUserState($context . '.data', null);
+        $app->setUserState($context . '.success', true);
 
         // Redirect to the profile screen.
         $this->setMessage(JText::_('Salvataggio bozza riuscito con successo'));
@@ -245,9 +255,12 @@ class IPieControllerDraft extends JControllerForm
         }
         
         if ($model->setPending($id)) {
-            $this->notifyUsers($id, $data);
+            IPieHelperMailer::notifySystemOnDraftSubmission(array(
+                'name' => $data['name'],
+                'edit_link' => JURI::root().'administrator/index.php?option=com_ipie&task=draft.edit&id='.$id,
+            ));
             $this->setMessage(JText::sprintf('Invio bozza riuscito con successo', $model->getError()), 'warning');
-            $this->setRedirect(JRoute::_('index.php?option=com_ipie&task=draft.pending&id='.$id, false));
+            $this->setRedirect(JRoute::_('index.php?option=com_ipie&task=draft.success&id='.$id, false));
         } else {
             $this->setMessage(JText::sprintf('Invio bozza fallito', $model->getError()), 'warning');
             $this->setRedirect(JRoute::_('index.php?option=com_ipie&task=draft.edit', false));
@@ -256,35 +269,6 @@ class IPieControllerDraft extends JControllerForm
         $app->setUserState($context . '.data', null);
     }
 
-    /**
-     * Usato per mandare email di notifica dopo invio bozza
-     * @param JModel $model
-     * @param boolean $validData
-     * @todo le mail...
-     */
-    protected function notifyUsers($id, $data)
-    {
-        return true;
-        
-        $app = JFactory::getApplication();
-        $params = JComponentHelper::getParams('com_ipie');
-
-        $hash = md5($data->name . $data->surname . $data->email);
-        $body = JText::sprintf('REGISTRATION_BODY', JRoute::_(JURI::root() . 'index.php?option=com_bnb&task=registration.complete&id=' . $id . '&hash=' . $hash, 'Complete now your registration!'));
-        //echo $body;
-
-        $mail = JFactory::getMailer();
-
-        $mail->addRecipient($data->email);
-        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Complete your registration on BnB'));
-        $mail->setBody($body);
-        //echo $body;die();
-        $sent = $mail->Send();
-    }  
-    
-    
     public function pending() 
     {
         $draft_id = JRequest::getInt('id');
@@ -292,5 +276,14 @@ class IPieControllerDraft extends JControllerForm
         $view = $this->getView('draft', 'html');
         $view->assignRef('item', $model->getItem($draft_id));
         $view->pending();
+    }
+
+    public function success() 
+    {
+        $draft_id = JRequest::getInt('id');
+        $model = $this->getModel('Draft');
+        $view = $this->getView('draft', 'html');
+        $view->assignRef('item', $model->getItem($draft_id));
+        $view->success();
     }
 }

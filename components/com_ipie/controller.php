@@ -50,7 +50,17 @@ class IPieController extends JController
                 if (!empty($draft_id)) {
                     $model = $this->getModel('Draft');
                     $user = JFactory::getUser();
-                    return $model->isDraftOwner($draft_id, $user->id) && $model->isEditable($draft_id);
+                    if ($model->isDraftOwner($draft_id, $user->id)) {
+                        if (!$model->isEditable($draft_id))  {
+                            // non il massimo...
+                            JFactory::getApplication()
+                                    ->redirect(JRoute::_('index.php?option=com_ipie&task=draft.edit'));
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return false;
+                    }
                 } else {
                     // non il massimo...
                     JFactory::getApplication()

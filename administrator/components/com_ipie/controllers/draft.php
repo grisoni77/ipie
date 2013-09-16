@@ -40,8 +40,12 @@ class IPieControllerDraft extends IPieControllerForm
         $item = $model->getItem($id);
         $cmodel = $this->getModel('Company');
         $company = $cmodel->getItem($item->company_id);
+        $user = JFactory::getUser($company->user_id);
         // TODO mandare la mail con i dati di company...
-        IPieHelperMailer::notifyOnDraftApproval($company);
+        IPieHelperMailer::notifyOnDraftApproval(array(
+            'email' => $user->email,
+            'scheda_link' => JRoute::_(JURI::root().'index.php?option=com_ipie&view=company&id='.$company->company_id),
+        ));
     }    
 
     public function reject()
@@ -59,7 +63,7 @@ class IPieControllerDraft extends IPieControllerForm
             $this->setRedirect('index.php?option=com_ipie&task=draft.edit&id='.$id, $model->getError());
         } else {
             $reason = JRequest::getString('reason');
-            $this->sendRejectNotification($id, $post['reason']);
+            $this->sendRejectNotification($id, $reason);
             $this->setRedirect('index.php?option=com_ipie&view=companies', 'Scheda rifutata con successo');
         }
     }
@@ -70,9 +74,10 @@ class IPieControllerDraft extends IPieControllerForm
         $item = $model->getItem($id);
         $cmodel = $this->getModel('Company');
         $company = $cmodel->getItem($item->company_id);
+        $user = JFactory::getUser($company->user_id);
         // TODO mandare la mail con i dati di company...
         IPieHelperMailer::notifyOnDraftRejection(array(
-            'company' => $company,
+            'email' => $user->email,
             'reason' => $reason,
         ));
     }    

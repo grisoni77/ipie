@@ -17,6 +17,8 @@ class IPieViewDraft extends JView
     {
         // get the Data
         $form = $this->get('Form');
+        $model = $this->getModel();
+        $factors = $model->getFactors($form->getValue('company_id'));
 
         // Check for errors.
         if (count($errors = $this->get('Errors')))
@@ -34,7 +36,13 @@ class IPieViewDraft extends JView
     function pending()
     {
         $this->setLayout('pending');
-        $this->display();
+        parent::display();
+    }
+    
+    function success()
+    {
+        $this->setLayout('success');
+        parent::display();
     }
 
 }

@@ -131,6 +131,35 @@ class IPieHelperRoute
     }
 
     /**
+     * Get link a pagina dettaglio
+     *
+     * @param int $id id record
+     * @param string $slug testo descrittivo da aggiungere alla url (per SEF)
+     * @param array $params eventuali altri parametri (array associativo)
+     * @return string
+     */
+    static public function draftLink($id = null, $slug = null, $params = array())
+    {
+        if (isset($id)) {
+            $link = 'index.php?option=com_ipie&view=draft&id=' . self::slugit($id, $slug);
+        } else {
+            $link = 'index.php?option=com_ipie&view=draft';
+        }
+        // itemid
+        if (!array_key_exists('Itemid', $params) || empty($params['Itemid']))
+        {
+            // cerco itemid legato ad elenco
+            $query = array('view' => 'draft');
+            $params['Itemid'] = self::getItemid($query);
+        }
+        // aggiunge params
+        foreach ($params as $k => $v) {
+            $link .= '&' . $k . '=' . $v;
+        }
+        return $link;
+    }
+
+    /**
      * Get link a pagina settore
      *
      * @param int $id id record

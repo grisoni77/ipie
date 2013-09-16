@@ -13,7 +13,6 @@ $print = IPieHelperRoute::companyLink($item->company_id, $item->name, array(
 require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';
 $link = JURI::root() . JRoute::_(IPieHelperRoute::companyLink($item->company_id, $item->name), false);
 $email = 'index.php?option=com_mailto&tmpl=component&link=' . MailToHelper::addLink($link);
-$email .= '&subject=suca';
 
 
 // title pagina

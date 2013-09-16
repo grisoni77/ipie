@@ -15,9 +15,10 @@
             name="name" 
             type="text"
             default=""
-            label="Nome"
-            description="Nome"
+            label="Nome azienda"
+            description="Nome azienda"
             required="true"
+            message="name::inserire un nome"
         />
         
         <field 
@@ -27,6 +28,7 @@
             label="Ragione Sociale"
             description="Ragione Sociale"
             required="true"
+            message="ragione_sociale::inserire una ragione sociale"
         >
             <option value="spa">Spa</option>
             <option value="srl">Srl</option>
@@ -43,6 +45,7 @@
             description="Partita IVA"
             required="true" 
             maxlength="11"
+            message="piva::inserire una partita IVA"
         />
         
         <field 
@@ -52,6 +55,7 @@
             label="Numero di addetti"
             description="Numero di addetti"
             required="true" 
+            message="employees::inserire il numero di impiegati"
         />
 <!--        <field 
             name="employees" 
@@ -76,6 +80,7 @@
             description="Anno di fondazione"
             required="true" 
             maxlength="4"
+            message="year_foundation::inserire l'anno di fondazione"
         />
         
         <field 
@@ -86,6 +91,7 @@
             description="Logo"
             folder="draft"
             validate="logo"
+            message="logo::inserire un logo valido"
         />
         
         <field 
@@ -105,6 +111,7 @@
             label="Indirizzo"
             description="Indirizzo"
             required="true" 
+            message="address::inserire un indirizzo"
         />
         
         <field 
@@ -114,6 +121,7 @@
             label="Provincia"
             description="Provincia"
             required="true" 
+            message="province_id::selezionare la provincia"
         />
         
         <field 
@@ -124,6 +132,7 @@
             description="Città"
             required="true" 
             provfld="province_id" 
+            message="city_id::selezionare la città"
         />
         
         <field 
@@ -133,6 +142,7 @@
             label="CAP"
             description="CAP"
             required="true" 
+            message="cap::inserire un CAP valido"
         />
 
         <field 
@@ -142,6 +152,7 @@
             label="E-mail"
             description="E-mail"
             required="true" 
+            message="email::inserire un e-mail valida"
         />
         
         <field 
@@ -159,7 +170,7 @@
         
         <field 
             name="sectors"
-            type="sectors"
+            type="fesectors"
             label="Settori"
             description="Settori"
         />
@@ -172,6 +183,9 @@
             description="Area di eccellenza in lingua italiana. Max 1500 caratteri"
             required="true"
             maxlength="1500"
+            message="area_eccellenza_it::inserire area di eccellenza (IT)"
+            cols="80"
+            rows="5"
         />
         
         <field 
@@ -182,6 +196,9 @@
             description="Area di eccellenza in lingua inglese. Max 1500 caratteri"
             required="true"
             maxlength="1500"
+            message="area_eccellenza_en::inserire area di eccellenza (EN)"
+            cols="80"
+            rows="5"
         />
         
         <field 
@@ -191,8 +208,24 @@
             label="Collaborazioni ricercate"
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
-            maxlength="500"
+            maxlength="5"
+            cols="80"
+            rows="5"
         />
+        
+        <field
+            name="tos"
+            type="tos"
+            default=""
+            label="PLG_USER_PROFILE_FIELD_TOS_LABEL"
+            description="PLG_USER_PROFILE_FIELD_TOS_DESC"
+            validate="tos"
+            required="true"
+            message="tos::You must accept terms and conditions"
+        >
+            <option value="1">PLG_USER_PROFILE_OPTION_AGREE</option>
+            <option value="">JNO</option>
+        </field>
         
     </fieldset>
     

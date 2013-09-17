@@ -7,7 +7,6 @@
 /tmp/
 /includes/
 /plugins/
-/libraries/
 /robots.txt
 /configuration.php
 /README.txt
@@ -38,5 +37,14 @@ templates/*
 
 language/it-IT/*
 !/language/it-IT/it-IT.com_ipie.ini
+!/language/it-IT/com_ipie_email_tpl
 language/en-GB/*
 !/language/en-GB/en-GB.com_ipie.ini
+<<<<<<< HEAD
+!/language/en-GB/com_ipie_email_tpl
+
+=======
+
+libraries/*
+!/libraries/tcpdf_min
+>>>>>>> branch 'master' of https://github.com/grisoni77/ipie.git

@@ -5,9 +5,9 @@ $item = $this->item;
 
 // link print
 $print = IPieHelperRoute::companyLink($item->company_id, $item->name, array(
-            //'format' => 'pdf',
-            'tmpl' => 'component',
-            'print' => 1,
+            'format' => 'pdf',
+            //'tmpl' => 'component',
+            //'print' => 1,
         ));
 // link email
 require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';

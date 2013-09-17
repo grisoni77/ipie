@@ -14,12 +14,22 @@ class IPieViewCompany extends JView
     // Overwriting JView display method
     function display($tpl = null)
     {
-        $this->item = $this->get('Data');
-        echo 'PDF';
-        return;
-        
-
-        // Display the view
-        parent::display($tpl);
+        $item = $this->get('Data');
+        // settori
+        $sectors = array();
+        foreach ($item->sectors as $s) {
+            $sectors[] = $s->name;
+        }
+        // area eccellenza
+        $lang = JFactory::getLanguage();
+        $locale = $lang->getLocale();
+        if ('it' == $locale[4]) {
+            $area_eccellenza = $item->area_eccellenza_it;
+        } else {
+            $area_eccellenza = $item->area_eccellenza_en;
+        }
+        include 'tmpl/pdf.php';
+        //echo 'PDF';
+        die();
     }
 }

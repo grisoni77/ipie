@@ -65,7 +65,6 @@ class IPieControllerAdmin extends JControllerAdmin {
         {
             $prefix = PFX . 'Model';
         }
-        echo $name . $prefix;
 
         $model = parent::getModel($name, $prefix, array('ignore_request' => true));
         return $model;

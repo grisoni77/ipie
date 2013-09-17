@@ -13,7 +13,7 @@ class IPiePluginCompany extends JPlugin
     public function onBeforeCompanyDelete($context, $table)
     {
         // cancella il draft esistente
-        $model = JModel::getInstance('Draft', 'IPieModel');
+        $model = JModel::getInstance('Company', 'IPieModel');
         $model->deleteDraft($table->company_id);
     }
     
@@ -24,8 +24,14 @@ class IPiePluginCompany extends JPlugin
      */
     public function onAfterCompanyDelete($context, $table)
     {
-        if (file_exists($this->getLogoPath() . $table->logo)) {
-            JFile::delete($this->getLogoPath() . $table->logo);
+        if (!empty($table->logo)) {
+            if (file_exists($this->getLogoPath() . $table->logo)) {
+                JFile::delete($this->getLogoPath() . $table->logo);
+            }
+        }
+        // elimina user
+        if ($user = JFactory::getUser($table->user_id)) {
+            $user->delete();
         }
     }   
     

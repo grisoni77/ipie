@@ -114,8 +114,12 @@ class IPieModelCompany extends IPieModelAdmin
         $query->select('draft_id')->from('#__ipie_draft')->where('company_id=' . $company_id);
         $db->setQuery($query);
         $draft_id = $db->loadResult();
-        $model = JModel::getInstance('Draft', 'IPieModel');
-        $model->delete($draft_id);
+        if ($draft_id)
+        {
+            $model = JModel::getInstance('Draft', 'IPieModel');
+            return $model->delete($draft_id);
+        }
+        return true;
     }
 
     protected function getSubSectorsIds($company_id)
@@ -267,8 +271,9 @@ class IPieModelCompany extends IPieModelAdmin
         $item = $this->getitem($id);
         if (!empty($item->logo)) {
             JFile::delete($this->getLogoPath() . $item->logo);
-            $this->deleteLogoThumbnail($item->logo);
+            return $this->deleteLogoThumbnail($item->logo);
         }
+        return true;
     }
 
     public function createLogoThumbnail($filename)
@@ -298,8 +303,9 @@ class IPieModelCompany extends IPieModelAdmin
     {
         $path = $this->getLogoThumbPath().$filename;
         if (file_exists($path)) {
-            JFile::delete($path);
+            return JFile::delete($path);
         }
+        return true;
     }
 
 }

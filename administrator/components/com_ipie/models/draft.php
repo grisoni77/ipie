@@ -204,8 +204,9 @@ class IPieModelDraft extends IPieModelAdmin
         $item = $this->getitem($id);
         if (!empty($item->logo)) {
             JFile::delete($this->getLogoDraftPath().$item->logo);
-            $this->deleteLogoThumbnail($item->logo);
+            return $this->deleteLogoThumbnail($item->logo);
         }
+        return true;
     }
     
     public function createLogoThumbnail($filename)
@@ -230,8 +231,9 @@ class IPieModelDraft extends IPieModelAdmin
     {
         $path = $this->getLogoDraftThumbPath().$filename;
         if (file_exists($path)) {
-            JFile::delete($path);
+            return JFile::delete($path);
         }
+        return true;
     }
     
 }

@@ -14,8 +14,10 @@ class IPiePluginDraft extends JPlugin
      */
     public function onAfterDraftDelete($context, $table)
     {
-        if (file_exists($this->getLogoDraftPath() . $table->logo)) {
-            JFile::delete($this->getLogoDraftPath() . $table->logo);
+        if (!empty($table->logo)) {
+            if (file_exists($this->getLogoDraftPath() . $table->logo)) {
+                JFile::delete($this->getLogoDraftPath() . $table->logo);
+            }
         }
     }    
     

@@ -62,7 +62,7 @@ $app = JFactory::getApplication();
                 <div id="testata">
                     <h1><?php echo htmlspecialchars($app->getCfg('sitename')); ?></h1>
                     <div id="logos"><ul><li id="camcom"><a href="http://www.pie.camcom.it//" class="blank" title="Vai al sito di Unioncamere Piemonte [nuova finestra]"><span>Vai al sito di Unioncamere Piemonte</span></a></li>
-                            <li id="iito"><a href="/" title="iPie home page"><span>Torna alla home page di Imprese Innovative Piemonte</span></a></li></ul></div>
+                            <li id="iito"><a href="<?php echo JURI::root() ?>" title="iPie home page"><span>Torna alla home page di Imprese Innovative Piemonte</span></a></li></ul></div>
                 </div><!-- fine testata -->              
 
 

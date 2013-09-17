@@ -30,7 +30,7 @@ class IPieControllerDraft extends IPieControllerForm
             $this->setRedirect('index.php?option=com_ipie&task=draft.edit&id='.$id, $model->getError());
         } else {
             $this->sendApprovalNotification($id);
-            $this->setRedirect('index.php?option=com_ipie&view=companies', 'Scheda approvata con successo');
+            $this->setRedirect('index.php?option=com_ipie&view=companies', 'La scheda è stata approvata correttamente');
         }
     }
 
@@ -64,7 +64,7 @@ class IPieControllerDraft extends IPieControllerForm
         } else {
             $reason = JRequest::getString('reason');
             $this->sendRejectNotification($id, $reason);
-            $this->setRedirect('index.php?option=com_ipie&view=companies', 'Scheda rifutata con successo');
+            $this->setRedirect('index.php?option=com_ipie&view=companies', 'La scheda è stata respinta.');
         }
     }
 

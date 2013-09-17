@@ -51,26 +51,16 @@ $key_name = $this->_singular.'_id';
         'slider': new Fx.Slide('reject-fieldset', {duration: 500}),
         'open': function() {
             this.slider.slideIn();
-//            SqueezeBox.open($('reject-modal'), {
-//		handler: 'adopt',
-//		size: {x: 300, y: 200}
-//            });
         },
         'close': function() {
             this.slider.slideOut();
-//            $('reject-container').adopt($('reject-modal'));
-//            SqueezeBox.close();
         },
                 
         'hide': function() {
             this.slider.hide();
-//            $('reject-container').adopt($('reject-modal'));
-//            SqueezeBox.close();
         },
                 
         'send': function() {
-//            this.slider.hide();
-//            $('reason').value = $('reason-fake').value;
             Joomla.submitform('draft.reject');
         }
     };

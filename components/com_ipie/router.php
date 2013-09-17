@@ -38,7 +38,7 @@ function IPieBuildRoute(&$query)
                 break;
                 
             case 'company':
-                //$segments[] = 'detail';
+                $segments[] = 'detail';
                 $segments[] = $query['id'];
                 unset($query['view']);
                 unset($query['id']);
@@ -103,7 +103,7 @@ function IPieParseRoute($segments)
         default:
         case 'detail':
             $query['view'] = 'company';
-            $query['id'] = $segments[0];
+            $query['id'] = $segments[1];
             break;
         
     }

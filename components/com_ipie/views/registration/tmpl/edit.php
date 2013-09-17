@@ -7,6 +7,8 @@ JHtml::_('behavior.formvalidation');
 
 $key_name = 'registration_id';
 
+$params = JComponentHelper::getParams('com_ipie');
+
 //print_r($this->form->getErrors());
 $app = JFactory::getApplication();
 $rawerrors = $app->getUserState('com_ipie.registration.errors');
@@ -93,7 +95,12 @@ function isValid($field, $errors) {
                 <input type="checkbox" name="<?php echo $field->name ?>" id="jform_tos" class="required validate-tos" value="1" 
                        <?php if ($field->value==1) :?>checked="checked"<?php endif; ?>
                        />
-                <label for="jform_tos">dichiaro di aver preso visione e accettato l'<a href="#">informativa sul trattamento dei dati personali</a></label></td>
+                <?php 
+                $tosarticle = $params->get('tos_article');
+                $text = 'informativa sul trattamento dei dati personali';
+                $link = '<a class="modal" title="" href="index.php?option=com_content&amp;view=article&amp;layout=modal&amp;id=' . $tosarticle . '&amp;tmpl=component" rel="{handler: \'iframe\', size: {x:800, y:500}}">' . $text . '</a>';
+                ?>
+                <label for="jform_tos">dichiaro di aver preso visione e accettato l'<?php echo $link ?></label></td>
         </tr>
         
         
@@ -149,8 +156,6 @@ function isValid($field, $errors) {
             var v = new FormValidator('registration-form');
             //v.validate();
             Array.each(v.getFields(), function(el){console.log(v.validateField(v))});
-            console.log('ciupa');
-            
         });
     }
 </script>

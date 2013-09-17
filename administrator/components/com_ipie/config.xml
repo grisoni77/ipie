@@ -4,7 +4,14 @@
 	<fieldset name="mail"
 		label="Configurazione Posta"
 		description=""
+                addfieldpath="/administrator/components/com_ipie/models/fields"
 	>
+            <field name="tos_article"
+                type="modal_article"
+                label="Privacy"
+                description=""
+                />
+                
             <field name="sender_email"
                 type="text"
                 label="Email Mittente"

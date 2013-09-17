@@ -14,8 +14,9 @@ class IPieViewCompanies extends IPieViewList
      */
     protected function addToolBar()
     {
+        JToolBarHelper::custom($this->_plural . '.suspend', 'unpublish', 'unpublish', 'Sospendi Azienda');
         JToolBarHelper::publish($this->_plural . '.publish');
-        JToolBarHelper::unpublish($this->_plural . '.unpublish');
+        JToolBarHelper::unpublish($this->_plural . '.unpublish', 'Sospendi Scheda');
 
         JToolBarHelper::title(JText::_(sprintf('%s List', ucfirst($this->_plural))));
         JToolBarHelper::deleteList(

@@ -48,9 +48,9 @@ $action = 'index.php';//JRoute::_('index.php');
 <script type="text/javascript">
     var IPIE = IPIE || {};
     IPIE.resetForm = function() {
-        $('#nomeaz').val('');
-        $('#keywords').val('');
-        $('#sector_id').val(0);
-        $('#province_id').val(0);
+        jQuery('#nomeaz').val('');
+        jQuery('#keywords').val('');
+        jQuery('#sector_id').val(0);
+        jQuery('#prov').val(0);
     };
 </script>

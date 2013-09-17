@@ -102,8 +102,21 @@ class IPieHelperMailer
     
     static public function notifyOnCompanySuspension($data)
     {
-        $mailer = self::getMailer();
-        // send mail
+        $app = JFactory::getApplication();
+        $params = JComponentHelper::getParams('com_ipie');
+
+        $body = self::parseTemplate('notifyOnCompanySuspension', $data);
+        //echo $body;
+
+        $mail = self::getMailer();
+        $mail->IsHTML();
+        $mail->addRecipient($data['email']);
+        $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
+        $mail->setSubject(JText::_('Your account has been suspended'));
+        $mail->setBody($body);
+        //echo $body;die();
+        $sent = $mail->Send();
     }
     
     static public function notifySystemOnDraftSubmission($data)

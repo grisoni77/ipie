@@ -243,6 +243,7 @@ class IPieControllerDraft extends JControllerForm
      */
     public function sendForApprovation()
     {
+    	$this->save();
         $app = JFactory::getApplication();
         $data = JRequest::getVar('jform', array(), 'post', 'array');
         $id = JRequest::getInt('id');

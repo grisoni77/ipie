@@ -50,7 +50,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
         <?php endif; ?>
         <p class="spazia">
             <strong><?php echo JText::_('Dati di sintesi')?>:</strong>
-            <img src="<?php echo JUri::root().'images/ipie/logo/thumb/'.$item->logo ?>" alt="Logo <?php echo $item->name ?>" class="logo" />
+            <img src="<?php echo JUri::root().'images/ipie/logo/'.$item->logo ?>" alt="Logo <?php echo $item->name ?>" class="logo" />
             <br />
             
             <?php echo $item->address ?> - <?php echo $item->cap ?> <?php echo $item->city ?> (<?php echo strtoupper($item->province_code) ?>)                        

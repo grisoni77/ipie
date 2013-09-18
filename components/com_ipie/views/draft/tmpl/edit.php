@@ -128,7 +128,7 @@ function isValid($field, $errors) {
                     <td><?php echo $field->input ?>
                         <?php $field = $this->form->getField('current_logo') ?>
                         <?php echo $field->input ?>
-                        <span class="piccolo">(formati consentiti .gif, .jpg, .png, dimensione massima x mb)</span>
+                        <span class="piccolo">(formati consentiti .gif, .jpg, .png, dimensione massima 2Mb)</span>
                     </td>
                 </tr>
                 
@@ -241,7 +241,7 @@ function isValid($field, $errors) {
 <?php endif; ?>
 
     
-<script>
+<script type="text/javascript">
     if (typeof(JFormValidator) != 'undefined') {
         // conforma mootools validation al template
         JFormValidator.prototype.handleResponse = function(state, el)
@@ -266,10 +266,13 @@ function isValid($field, $errors) {
         });
         
         window.addEvent('domready', function() {
-            var v = new FormValidator('draft-form');
+            /*var v = new FormValidator('draft-form');
             //v.validate();
-            Array.each(v.getFields(), function(el){console.log(v.validateField(v))});
-            
+            Array.each(v.getFields(), function(el){
+            v.validateField(v);
+            //console.log(v.validateField(v))
+            });
+            */
         });
     }
     

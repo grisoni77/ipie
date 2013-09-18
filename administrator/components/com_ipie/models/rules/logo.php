@@ -35,6 +35,9 @@ class JFormRuleLogo extends JFormRule {
         if (empty($file['name']) && empty($cl)) {
             return false;
         }
+        if ($file['size'] > 2*1024*1024) {
+            return false;
+        }
         return true;
     }
 

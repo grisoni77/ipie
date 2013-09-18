@@ -23,13 +23,13 @@ $msg = $app->getMessageQueue();
             <tr>
                 <th><label for="username">Nome utente</label></th>
                 <td><input name="username" type="text" id="username" size="60" 
-                           placeholder="<?php echo JText::_('insert username') ?>" />
+                           placeholder="<?php echo JText::_('inserisci nome utente') ?>" />
                 </td>
             </tr>
             <tr>
                 <th><label for="password">Password</label></th>
                 <td><input name="password" type="password" id="password" size="60"  
-                           placeholder="<?php echo JText::_('insert password') ?>" />
+                           placeholder="<?php echo JText::_('inserisci password') ?>" />
                 </td>
             </tr>
             <tr>

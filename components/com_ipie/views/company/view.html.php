@@ -18,7 +18,7 @@ class IPieViewCompany extends JView
         // settori
         $this->sectors = array();
         foreach ($this->item->sectors as $s) {
-            $this->sectors[] = $s->name;
+            $this->sectors[] = JText::_($s->name);
         }
         // area eccellenza
         $lang = JFactory::getLanguage();

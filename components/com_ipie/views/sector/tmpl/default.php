@@ -6,10 +6,10 @@ $sector = $this->sector;
 
 // title pagina
 $doc = JFactory::getDocument();
-$doc->setTitle(JText::sprintf('Aziende del settore %s', $sector['name']));
+$doc->setTitle(JText::sprintf('Aziende del settore %s', JText::_($sector['name'])));
 // Briciole di pane
 $pathway = JFactory::getApplication()->getPathway();
-$pathway->addItem(JText::sprintf('Settore %s', $sector['name']));
+$pathway->addItem(JText::sprintf('Settore %s', JText::_($sector['name'])));
 
 $print_link = JFactory::getURI();
 $print_link->setVar('tmpl', 'component');

@@ -1,7 +1,7 @@
 <?php if (count($list)) : ?>
 <ul>
     <?php foreach ($list as $s) : 
-            $slug = JFilterOutput::stringURLUnicodeSlug($s->name);
+            $slug = JFilterOutput::stringURLUnicodeSlug(JText::_($s->name));
             $link = IPieHelperRoute::sectorLink($s->sector_id, $slug);
             //$link = JRoute::_('index.php?option=com_ipie&view=sector&filter_sector='.$s->sector_id.':'.$slug);
     ?>
@@ -9,7 +9,7 @@
         <?php if ($filter_sector == $s->sector_id ) : ?>class="active"<?php endif; ?>
         >
         <a href="<?php echo JRoute::_($link) ?>" title="" />
-            <span><?php echo $s->name ?></span>
+            <span><?php echo JText::_($s->name) ?></span>
         </a>
     </li>
     <?php endforeach; ?>

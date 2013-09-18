@@ -17,7 +17,7 @@ $action = 'index.php';//JRoute::_('index.php');
             <?php foreach ($sectors as $s) : ?>
             <option value="<?php echo $s->sector_id ?>"
                     <?php if ($filter_sector == $s->sector_id ) : ?>selected="selected"<?php endif; ?>
-                    ><?php echo $s->name ?>
+                    ><?php echo JText::_($s->name) ?>
             </option>
             <?php endforeach; ?>
         </select>	

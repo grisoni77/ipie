@@ -97,7 +97,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
 
         <ul>
             <?php foreach ($item->factors as $f) : ?>
-            <li><?php echo $f->description ?></li>
+            <li><?php echo JText::_($f->description) ?></li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>

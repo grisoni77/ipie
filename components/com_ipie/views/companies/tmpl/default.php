@@ -18,7 +18,7 @@ require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';
 $email_link = JUri::root().'index.php?option=com_mailto&tmpl=component&link=' . MailToHelper::addLink($email_link->toString());
 ?>
 
-<h3 class="blocco"><?php echo JText::_('Risultati Cerca Azienda')?></h3>
+<h2><?php echo JText::_('Risultati Cerca Azienda')?></h2>
 
 <ul class="actions">
     <li class="print-icon">

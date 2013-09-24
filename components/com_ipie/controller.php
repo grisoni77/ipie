@@ -44,6 +44,13 @@ class IPieController extends JController
         
         switch ($view)
         {
+            case 'company':
+                $company_id = JRequest::getInt('id');
+                $model = $this->getModel('Company');
+                $company = $model->getItem($id);
+                return $company->published == 1;
+                break;
+                
             case 'draft':
                 $context = "com_ipie.edit.draft";
                 $draft_id = JRequest::getInt('id');

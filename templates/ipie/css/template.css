@@ -55,7 +55,7 @@ body#mainbody {
 }
 #strumenti {
 	float: right; width: 77%; background-color: #fff; 
-	margin-left: 50px;
+	/*margin-left: 50px;*/
 }
 /* font */
 .jfontsize ul {
@@ -70,8 +70,13 @@ ul.jflanguageselection li#active_language img { opacity:0.4;
 filter:alpha(opacity=40); /* For IE8 and earlier */ }
 
 /* mappa del sito */
-.moduletable_mappa { float: left; width: 220px;  text-transform: uppercase; padding-left: 2.5em;  }
+.moduletable_mappa { float: left; /*width: 220px;*/  text-transform: uppercase; padding-left: 2.5em;  }
 .moduletable_mappa a { border-right: 2px solid #ea6427; padding-right: 2.5em; }
+
+/* area riservata */
+.moduletable_area { float: left; /*width: 180px; */ text-transform: uppercase; padding-left: 2.5em;  }
+.moduletable_area li { margin-right: 1em; }
+.moduletable_area li a:link, .moduletable_area li a:visited  { color: #999!important; }
 
 /*cerca*/
 .moduletable_search { float: right; /*width: 280px;*/ } 
@@ -82,8 +87,8 @@ font-size: 0.825em; display: inline; margin-left: 5px; font-weight: bold; }
 
 /*menu orizzontale*/
 
-  ul.joomla-nav-menu li { display:inline; text-transform: uppercase; }
-  ul.joomla-nav-menu a { font-weight: bold; text-decoration:none; /*padding: 0.25em 1em;*/ }
+  ul.joomla-nav-menu li, ul.joomla-nav li{ display:inline; text-transform: uppercase; }
+  ul.joomla-nav-menu a, ul.joomla-nav a{ font-weight: bold; text-decoration:none; /*padding: 0.25em 1em;*/ }
   
   #ja-mainnav {
   float:right; width: auto; clear: both;
@@ -289,7 +294,7 @@ height: 27px; width: 260px;
   	background: url(../images/vai.gif) no-repeat;
 	float: right; margin-right: 15px;
 	width: 9px; height: 17px;
-	margin-top: 4px;
+	margin-top: 4px; 
   }
     #body_outer #ricerca #form_az input#form1_submit {
   	background: url(../images/vai.gif) no-repeat 100% 50%;
@@ -306,7 +311,7 @@ color: #ea6427;
   }
       #body_outer #ricerca #form_az input#form1_reset {
  background: url(../images/reimposta.gif) no-repeat 100% 50%;
-	float: right; margin-right: 10px; /*padding-right: 12px;*/
+	float: right; margin-right: 0px; /*padding-right: 12px;*/
 	width: 110px;
 	margin-top: 5px;
 	text-transform: lowercase;
@@ -803,6 +808,10 @@ margin: 10px auto;}
 
 .qlform .message p { text-align:center!important; margin: 5px 0px!important; }
 
+/* mappa */
+
+#map_canvas { height:500px; width:100%; }
+
 /* mail */
 #mailto-window
 
@@ -942,9 +951,4 @@ span.spacer > span.text label {
 
   color:#cc0000;
 
-}
-
-#map_canvas {
-  width: 100%;
-  height: 400px;
 }

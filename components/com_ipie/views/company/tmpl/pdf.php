@@ -26,9 +26,9 @@ $settore = implode(', ', $sectors);
 // formatting config
 $fontname = 'Helvetica';
 $textsize = 8;
-define('VERDE1', 64);
-define('VERDE2', 152);
-define('VERDE3', 38);
+define('VERDE1', 234);
+define('VERDE2', 100);
+define('VERDE3', 39);
 $verde1 = VERDE1;
 $verde2 = VERDE2;
 $verde3 = VERDE3;
@@ -149,8 +149,8 @@ $pdf->MultiCell(0, 0, $item->name, 0, 'L', 0, 1, $pdf->GetX(), $pdf->getY(), tru
 $pdf->SetFont($fontname, '', $textsize, '', true);
 $pdf->SetTextColor(0,0,0);
 $pdf->setY($pdf->getY()+5);
-$settori = sprintf('<strong style="color: #409826">%s: </strong><span>%s</span>', 
-    JText::_('Settore di attivi'), $settore);
+$settori = sprintf('<strong style="color: #ea6427">%s: </strong><span>%s</span>', 
+    JText::_('Settore di interesse'), $settore);
 $pdf->writeHTMLCell(140, '', $pdf->GetX(), $pdf->getY(), $settori, 0, 0, 0, true, 'L', true);
 
 function file_url($url){
@@ -205,7 +205,7 @@ $pdf->setY($pdf->GetY());
 // write html
 $pdf->SetFont($fontname, '', $textsize, '', true);
 $pdf->SetTextColor(0,0,0);
-$text = sprintf('<strong style="color: #409826">%s: </strong><span>%s</span>', 
+$text = sprintf('<strong style="color: #ea6427">%s: </strong><span>%s</span>', 
     JText::_('Anno di fondazione'), $item->year_foundation);
 $pdf->writeHTMLCell(100, '', $pdf->GetX(), '', $text, 0, 0, 0, true, 'L', true);
 $pdf->Ln();
@@ -220,8 +220,8 @@ $pdf->Ln();
 // write html
 $pdf->SetFont($fontname, '', $textsize, '', true);
 $pdf->SetTextColor(0,0,0);
-$text = sprintf('<strong style="color: #409826">%s: </strong><span>%s</span>', 
-    JText::_('Classe di addetti'), $item->employees);
+$text = sprintf('<strong style="color: #ea6427">%s: </strong><span>%s</span>', 
+    JText::_('Numero di addetti'), $item->employees);
 $pdf->writeHTMLCell(100, '', $pdf->GetX(), '', $text, 0, 0, 0, true, 'L', true);
 
 // ---------------------------------------------------------
@@ -232,7 +232,7 @@ $pdf->setY($pdf->GetY()+5);
 $pdf->SetFont($fontname, 'B', $textsize, '', true);
 $pdf->SetTextColor($verde1, $verde2, $verde3);
 //$pdf->Cell(0, 0, ('FATTORI PER CUI L’AZIENDA &Egrave; CONSIDERATA INNOVATIVA'), 0, 1, 'L', false);
-$text = 'FATTORI PER CUI 2';
+$text = 'FATTORI PER CUI';
 $pdf->headingLine($text);
 
 // set bacground image
@@ -277,7 +277,7 @@ $pdf->setY($pdf->GetY()+5);
 $pdf->SetFont($fontname, 'B', $textsize, '', true);
 $pdf->SetTextColor($verde1, $verde2, $verde3);
 //$pdf->Cell(0, 0, ('FATTORI PER CUI L’AZIENDA &Egrave; CONSIDERATA INNOVATIVA'), 0, 1, 'L', false);
-$text = 'AREA DI ECCELLENZA 2';
+$text = 'AREA DI ECCELLENZA';
 $pdf->headingLine($text);
 // testo
 $pdf->setY($pdf->GetY()+2);
@@ -296,7 +296,7 @@ if (!empty($item->related)) :
     $pdf->SetFont($fontname, 'B', $textsize, '', true);
     $pdf->SetTextColor($verde1, $verde2, $verde3);
     //$pdf->Cell(0, 0, ('FATTORI PER CUI L’AZIENDA &Egrave; CONSIDERATA INNOVATIVA'), 0, 1, 'L', false);
-    $text = 'Nella Community Imprese Innovative Torino ti potrebbero interessare anche 2';
+    $text = 'Nella Community Imprese Innovative Piemonte ti potrebbero interessare anche';
     $pdf->headingLine($text);
     
     // formatting config

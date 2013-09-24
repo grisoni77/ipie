@@ -86,11 +86,13 @@ class IPieModelDraft extends IPieModelAdmin
         }
         // get company model
         $model = JModel::getInstance('Company', 'IPieModel');
+        // forza pubblicazione
+        $data['published'] = 1;
         if (!$model->save($data, false)) {
-            print_r($db);
+            //print_r($db);
             $this->setError($model->getError());
             $db->transactionRollback();
-            die();
+            //die();
             return false;
         }
         $db->transactionCommit();

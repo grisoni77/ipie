@@ -1,12 +1,5 @@
 <?php
-/**
- * @package		Joomla.Site
- * @copyright	Copyright (C) 2005 - 2012 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
-// no direct access
-defined('_JEXEC') or die;
+defined('_JEXEC') or die('Restricted access');
 
 /**
  * This is a file to add template specific chrome to module rendering.  To use it you would
@@ -19,40 +12,18 @@ defined('_JEXEC') or die;
  * This gives template designers ultimate control over how modules are rendered.
  *
  * NOTICE: All chrome wrapping methods should be named: modChrome_{STYLE} and take the same
- * two arguments.
- *
- * This module chrome file creates custom output for modules used with the Atomic template.
- * The first function wraps modules using the "container" style in a DIV. The second function
- * uses the "bottommodule" style to change the header on the bottom modules to H6. The third
- * function uses the "sidebar" style to change the header on the sidebar to H3.
+ * three arguments.
  */
 
+
+/**
+ * Custom module chrome, echos the whole module in a <div> and the header in <h{x}>. The level of
+ * the header can be configured through a 'headerLevel' attribute of the <jdoc:include /> tag.
+ * Defaults to <h3> if none given
+ */
 function modChrome_nea($module, &$params, &$attribs)
 {
-	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 3;
-	if (!empty ($module->content)) : ?>
-		<div class="moduletable<?php echo $params->get('moduleclass_sfx'); ?>">
-			<?php if ($module->showtitle) : ?>
-				<h<?php echo $headerLevel; ?>><?php echo $module->title; ?></h<?php echo $headerLevel; ?>>
-			<?php endif; ?>
-			<?php echo $module->content; ?>
-		</div>
-	<?php endif;
-}
-
-function modChrome_sidebar($module, &$params, &$attribs)
-{
-	if (!empty ($module->content)) : ?>
-		<?php if ($module->showtitle) : ?>
-			<h3><span><?php echo $module->title; ?></span></h3>
-		<?php endif; ?>
-		<?php echo $module->content; ?>
-	<?php endif;
-}
-
-function modChrome_nea2($module, &$params, &$attribs)
-{
-	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 3;
+	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 2;
 	if (!empty ($module->content)) : ?>
 		<div class="moduletable<?php echo $params->get('moduleclass_sfx'); ?>">
 			<?php if ($module->showtitle) : ?>
@@ -61,5 +32,41 @@ function modChrome_nea2($module, &$params, &$attribs)
 			<?php echo $module->content; ?>
 		</div>
 	<?php endif;
+}
+
+/*
+ * Module chrome for rendering the module in a slider
+ */
+function modChrome_slider($module, &$params, &$attribs)
+{
+	jimport('joomla.html.pane');
+	// Initialize variables
+	$sliders = & JPane::getInstance('sliders');
+	$sliders->startPanel( JText::_( $module->title ), 'module' . $module->id );
+	echo $module->content;
+	$sliders->endPanel();
+}
+/*
+ * Module chrome that allows for rounded corners by wrapping in nested div tags
+ */
+function modChrome_jarounded($module, &$params, &$attribs)
+{ ?>
+		<div class="jamod module<?php echo $params->get('moduleclass_sfx'); ?>" id="Mod<?php echo $module->id; ?>">
+			<div>
+				<div>
+					<div>
+						<?php if ($module->showtitle != 0) : ?>
+						<?php
+						if(isset($_COOKIE['Mod'.$module->id])) $modhide = $_COOKIE['Mod'.$module->id];
+						else $modhide = 'show';
+						?>
+						<h3 class="<?php echo $modhide; ?>"><span><?php echo $module->title; ?></span></h3>
+						<?php endif; ?>
+						<div class="jamod-content"><?php echo $module->content; ?></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php
 }
 ?>

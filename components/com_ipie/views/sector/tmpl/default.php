@@ -6,10 +6,10 @@ $sector = $this->sector;
 
 // title pagina
 $doc = JFactory::getDocument();
-$doc->setTitle(JText::sprintf('Aziende del settore %s', JText::_($sector['name'])));
+$doc->setTitle(JText::sprintf('Aziende del settore %s', $sector['name']));
 // Briciole di pane
 $pathway = JFactory::getApplication()->getPathway();
-$pathway->addItem(JText::sprintf('Settore %s', JText::_($sector['name'])));
+$pathway->addItem(JText::sprintf('Settore %s', $sector['name']));
 
 $print_link = JFactory::getURI();
 $print_link->setVar('tmpl', 'component');
@@ -22,7 +22,7 @@ $email_link = JUri::root().'index.php?option=com_mailto&tmpl=component&link=' . 
 
 ?>
 
-<h3 class="blocco"><?php echo $this->sector['name']?></h3>
+<h2><?php echo $this->sector['name']?></h2>
 
 <?php if (0 == JRequest::getInt('print')) : ?>
  <ul class="actions">

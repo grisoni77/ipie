@@ -95,9 +95,9 @@ l[i].onclick=function(){window.open(this.href);return(false)};
   </div><!-- fine testata -->              
  <div class="clr"></div>
      <?php if ($this->countModules('left')) { ?>
-            <div id="sidebar-left">     	 
+            <div id="sidebar-left" >     	 
 
-                <jdoc:include type="modules" name="left" style="nea2" headerLevel="2" />
+                <jdoc:include type="modules" name="left" style="nea" headerLevel="2" />
                 <hr /> 
             </div><!-- end sidebar_left -->
         <?php } ?>
@@ -111,7 +111,7 @@ l[i].onclick=function(){window.open(this.href);return(false)};
  <div id="body_outer">
   <?php if ($this->countModules('ricerca')) { ?>
  <div id="ricerca">
-         <jdoc:include type="modules" name="ricerca" style="nea" />
+         <jdoc:include type="modules" name="ricerca" style="nea" headerlevel="2" />
   </div>
 <hr /> 
     <?php } ?>
@@ -132,9 +132,6 @@ l[i].onclick=function(){window.open(this.href);return(false)};
   </div> <!-- fine body_outer -->
   </div><!-- fine main -->
  <div id="footer">
-     <?php if ($this->countModules('social')) { ?>
-         <jdoc:include type="modules" name="social"  style="nea" headerLevel="2" />
-     <?php } ?><!-- end footer -->
         <?php if ($this->countModules('footer')) { ?>
                 <jdoc:include type="modules" name="footer"  style="nea" headerLevel="2" />
 	<?php } ?><!-- end footer -->

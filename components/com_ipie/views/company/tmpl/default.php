@@ -30,7 +30,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
 <?php if (0 == JRequest::getInt('print')) : ?>
     <ul class="actions">
         <li class="print-icon">
-            <a href="<?php echo $print; ?>" title="Stampa" rel="nofollow"><img src="/media/system/images/printButton.png" alt="Stampa"  /></a>
+            <a href="<?php echo $print; ?>" title="Pdf" rel="nofollow" class="blank"><img src="/media/system/images/pdf_button.png" alt="Pdf"  /></a>
         </li>
         <li class="email-icon">
             <a href="<?php echo JRoute::_($email) ?>" title="Email" onclick="window.open(this.href, 'win2', 'width=400,height=350,menubar=yes,resizable=yes');
@@ -93,11 +93,11 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
         </ul>
         
         <?php if (count($item->factors)>0) : ?>
-        <p><strong><?php echo JText::_("Fattori per cui l'azienda è considerata innovativa") ?>:</strong></p>
+        <p><strong><?php echo JText::_("Fattori per cui") ?>:</strong></p>
 
         <ul>
             <?php foreach ($item->factors as $f) : ?>
-            <li><?php echo JText::_($f->description) ?></li>
+            <li><?php echo $f->description ?></li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>

@@ -215,7 +215,7 @@ function isValid($field, $errors) {
                     <input type="reset" class="button" name="cancella" id="cancella" value="cancella" />  
                     <input type="submit" class="validate button" onclick="IPIE.submitDraft('draft.save');return false;"
                         value="<?php echo JText::_('salva bozza');?>" />
-                    <input type="submit" class="validate button" onclick="IPIE.submitDraft('draft.sendForApprovation');return false;"
+                    <input type="submit" class="button" onclick="IPIE.submitDraft('draft.sendForApprovation');return false;"
                         value="<?php echo JText::_('invia');?>" />
                     
                     <?php $field = $this->form->getField('draft_id') ?>

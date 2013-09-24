@@ -75,7 +75,7 @@ class IPieHelperMailer
         $mail->addRecipient($data['email']);
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Richiesta di registrazione approvata'));
+        $mail->setSubject(JText::_('Your registration request has been approved'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();
@@ -94,7 +94,7 @@ class IPieHelperMailer
         $mail->addRecipient($data['email']);
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Richiesta di registrazione respinta'));
+        $mail->setSubject(JText::_('Your registration request has been refused'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();
@@ -113,7 +113,7 @@ class IPieHelperMailer
         $mail->addRecipient($data['email']);
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Sospensione account'));
+        $mail->setSubject(JText::_('Your account has been suspended'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();
@@ -132,7 +132,7 @@ class IPieHelperMailer
         $mail->addRecipient($params->get('system_email'));
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Nuova bozza in attesa di approvazione'));
+        $mail->setSubject(JText::_('A company submitted a new draft copy to be approved'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();
@@ -151,7 +151,7 @@ class IPieHelperMailer
         $mail->addRecipient($data['email']);
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Scheda azienda approvata'));
+        $mail->setSubject(JText::_('Your draft submission has been accepted'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();
@@ -170,7 +170,7 @@ class IPieHelperMailer
         $mail->addRecipient($data['email']);
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('Scheda azienda respinta'));
+        $mail->setSubject(JText::_('Your draft submission has been refused'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();

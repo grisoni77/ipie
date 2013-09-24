@@ -174,8 +174,16 @@ function isValid($field, $errors) {
                     <td><?php echo $field->input ?></td>
                 </tr>
                 
-                <?php $field = $this->form->getField('collaborazioni') ?>
-                <tr <?php echo isValid('collaborazioni', $errors) ? '' : 'class="errore"' ?>>
+                <?php $field = $this->form->getField('collaborazioni_it') ?>
+                <tr <?php echo isValid('collaborazioni_it', $errors) ? '' : 'class="errore"' ?>>
+                    <th><?php echo $field->label ?>
+                        <br/><span class="piccolo">massimo 500 caratteri</span>
+                    </th>
+                    <td><?php echo $field->input ?></td>
+                </tr>
+
+                <?php $field = $this->form->getField('collaborazioni_en') ?>
+                <tr <?php echo isValid('collaborazioni_en', $errors) ? '' : 'class="errore"' ?>>
                     <th><?php echo $field->label ?>
                         <br/><span class="piccolo">massimo 500 caratteri</span>
                     </th>

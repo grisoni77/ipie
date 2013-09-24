@@ -202,15 +202,23 @@
         />
         
         <field 
-            name="collaborazioni" 
+            name="collaborazioni_it" 
             type="textarea"
             default=""
-            label="Collaborazioni ricercate"
+            label="Collaborazioni ricercate (in lingua italiana)"
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
-            maxlength="5"
-            cols="80"
-            rows="5"
+            maxlength="500"
+        />
+        
+        <field 
+            name="collaborazioni_en" 
+            type="textarea"
+            default=""
+            label="Collaborazioni ricercate (in lingua inglese"
+            description="Collaborazioni ricercate. Max 500 caratteri"
+            required="false"
+            maxlength="500"
         />
         
         <field

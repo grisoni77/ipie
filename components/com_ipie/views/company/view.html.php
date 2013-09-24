@@ -25,8 +25,10 @@ class IPieViewCompany extends JView
         $locale = $lang->getLocale();
         if ('it' == $locale[4]) {
             $this->area_eccellenza = $this->item->area_eccellenza_it;
+            $this->collaborazioni = $this->item->collaborazioni_it;
         } else {
             $this->area_eccellenza = $this->item->area_eccellenza_en;
+            $this->collaborazioni = $this->item->collaborazioni_en;
         }
 
 

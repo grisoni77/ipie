@@ -74,6 +74,20 @@ class IPieSiteModelCompanies extends JModelList
         }
 
         // Filter
+        $val = $this->getState('filter.name');
+        if (!empty($val))
+        {
+            $query->where('(c.name LIKE \'%' . $val . '%\')');
+        }
+
+        // Filter
+        $val = $this->getState('filter.name');
+        if (!empty($val))
+        {
+            $query->where('(c.name LIKE \'%' . $val . '%\')');
+        }
+
+        // Filter
         $val = $this->getState('filter.city');
         if (!empty($val))
         {
@@ -108,8 +122,11 @@ class IPieSiteModelCompanies extends JModelList
 
         // Load the filter state.
         $search = $this->getStateFromRequest('filter_search', '', 'string');
-        //Omit double (white-)spaces and set state
         $this->setState('filter.search', preg_replace('/\s+/', ' ', $search));
+        
+        $name = $this->getStateFromRequest('filter_name', '', 'string');
+        //Omit double (white-)spaces and set state
+        $this->setState('filter.name', preg_replace('/\s+/', ' ', $name));
 
         //Filter (dropdown) state
         $state = $this->getStateFromRequest('filter_city', '', 'int');

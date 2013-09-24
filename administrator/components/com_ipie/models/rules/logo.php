@@ -32,9 +32,9 @@ class JFormRuleLogo extends JFormRule {
         // get form db
         $cl = $input->get('current_logo');
         // field required se non ce n'è già uno in db
-        if (empty($file['name']) && empty($cl)) {
-            return false;
-        }
+//        if (empty($file['name']) && empty($cl)) {
+//            return false;
+//        }
         if ($file['size'] > 2*1024*1024) {
             return false;
         }

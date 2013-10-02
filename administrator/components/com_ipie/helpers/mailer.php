@@ -55,7 +55,7 @@ class IPieHelperMailer
         $mail->addRecipient($params->get('system_email'));
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
-        $mail->setSubject(JText::_('A new registration request has been sent'));
+        $mail->setSubject(JText::_('Nuova richiesta di registrazione al sito Imprese Innovative Piemonte'));
         $mail->setBody($body);
         //echo $body;die();
         $sent = $mail->Send();

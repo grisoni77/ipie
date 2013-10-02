@@ -18,7 +18,7 @@ class IPieViewDraft extends JView
         // get the Data
         $form = $this->get('Form');
         $model = $this->getModel();
-        $factors = $model->getFactors($form->getValue('company_id'));
+        //$factors = $model->getFactors($form->getValue('company_id'));
 
         // Check for errors.
         if (count($errors = $this->get('Errors')))

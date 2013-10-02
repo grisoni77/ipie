@@ -190,7 +190,9 @@ class IPieModelDraft extends IPieModelAdmin
             $this->createLogoThumbnail($filename);
             // cancella eventuale file precedente
             if (!empty($data['current_logo'])) {
-                JFile::delete($path.$data['current_logo']);
+                if (file_exists($path.$data['current_logo'])) {
+                    JFile::delete($path.$data['current_logo']);
+                }
                 $this->deleteLogoThumbnail($data['current_logo']);
             }
         } else {
@@ -205,7 +207,9 @@ class IPieModelDraft extends IPieModelAdmin
     {
         $item = $this->getitem($id);
         if (!empty($item->logo)) {
-            JFile::delete($this->getLogoDraftPath().$item->logo);
+            if (file_exists($this->getLogoDraftPath().$item->logo)) {
+            	JFile::delete($this->getLogoDraftPath().$item->logo);
+            }
             return $this->deleteLogoThumbnail($item->logo);
         }
         return true;

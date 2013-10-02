@@ -59,6 +59,11 @@ class IPieModelCompany extends IPieModelAdmin
         else {
             $this->deleteOldLogo($data['company_id']);
         }
+        if (!empty($data['address'])) {
+            $location = $this->geocodeAddress($data);
+            $data['lat'] = $location['lat'];
+            $data['lng'] = $location['lng'];
+        }
         // save
         $res = parent::save($data);
         // se ok salva anche dati accessori
@@ -255,7 +260,9 @@ class IPieModelCompany extends IPieModelAdmin
             $this->createLogoThumbnail($filename);
             // cancella eventuale file precedente
             if (!empty($data['current_logo'])) {
-                JFile::delete($path . $data['current_logo']);
+            	if (file_exists($path . $data['current_logo'])) {
+                    JFile::delete($path . $data['current_logo']);
+                }
                 // delete miniatura
                 $this->deleteLogoThumbnail($data['current_logo']);
             }
@@ -270,7 +277,9 @@ class IPieModelCompany extends IPieModelAdmin
     {
         $item = $this->getitem($id);
         if (!empty($item->logo)) {
-            JFile::delete($this->getLogoPath() . $item->logo);
+            if (file_exists($this->getLogoPath() . $item->logo)) {
+            	JFile::delete($this->getLogoPath() . $item->logo);
+            }
             return $this->deleteLogoThumbnail($item->logo);
         }
         return true;
@@ -308,4 +317,47 @@ class IPieModelCompany extends IPieModelAdmin
         return true;
     }
 
+    
+    private function geocodeAddress($data) 
+    {
+        $db = JFactory::getDbo();
+        $q = 'SELECT * FROM #__ipie_province WHERE province_id = '.$data['province_id'];
+        $db->setQuery($q);
+        $prov = $db->loadObject();
+        $q = 'SELECT * FROM #__ipie_city WHERE city_id = '.$data['city_id'];
+        $db->setQuery($q);
+        $city = $db->loadObject();
+        $loc = geocoder::getLocation(sprintf('%s, %s, %s, %s, Piemonte, Italy', 
+            $data['address'], $data['cap'], $city->name, $prov->name));
+        return $loc;
+    }
+}
+
+class geocoder{
+    static private $url = "http://maps.google.com/maps/api/geocode/json?sensor=false&address=";
+
+    static public function getLocation($address){
+        $url = self::$url.urlencode($address);
+        
+        $resp_json = self::curl_file_get_contents($url);
+        $resp = json_decode($resp_json, true);
+
+        if($resp['status']='OK'){
+            return $resp['results'][0]['geometry']['location'];
+        }else{
+            return false;
+        }
+    }
+
+
+    static private function curl_file_get_contents($URL){
+        $c = curl_init();
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($c, CURLOPT_URL, $URL);
+        $contents = curl_exec($c);
+        curl_close($c);
+
+        if ($contents) return $contents;
+            else return FALSE;
+    }
 }

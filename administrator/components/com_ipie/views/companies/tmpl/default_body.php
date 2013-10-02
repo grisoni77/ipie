@@ -32,11 +32,13 @@ $entities_name = $this->getName();
                         <?php echo $item->address; ?>
                 </td>
                 <td>
+                    <?php if ($item->draft_state == 'pending') : ?>
                     <a href="<?php echo $scheda_link; ?>">
+                    	<img src="templates/bluestork/images/admin/icon-16-notice-note.png" title="In attesa di approvazione" />
                         <img src="templates/bluestork/images/menu/icon-16-edit.png" title="Modifica/approva scheda" />
                     </a>
-                    <?php if ($item->draft_state == 'pending') : ?>
-                    <img src="templates/bluestork/images/admin/icon-16-notice-note.png" title="In attesa di approvazione" />
+                    <?php else : ?>
+                    non ci sono richieste di modifica
                     <?php endif; ?>
                 </td>
                 <td>

@@ -27,3 +27,5 @@ $controller->redirect();
 //    'password' => 'password',
 //    'login_link' => JRoute::_(JURI::root().'index.php?option=com_users&view=login'),
 //    ));
+
+echo count('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu erat eget dui tincidunt imperdiet. Quisque augue mauris, mattis a fermentum vehicula, rutrum et eros. Praesent consequat consectetur tortor, sit ame');

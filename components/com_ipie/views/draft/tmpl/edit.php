@@ -29,7 +29,8 @@ function isValid($field, $errors) {
 
 	<p>La <strong>compilazione</strong> dei campi contrassegnati con il simbolo <strong>*</strong> è <strong>obbligatoria</strong> così come l’<strong>accettazione dell’informativa sul trattamento dei dati personali</strong>.</p>
 	<p>Per eventuale assistenza in fase di compilazione, contattare il numero <strong>800.488.003.48</strong></p> 
-
+	<p><a href="<?php echo JRoute::_('index.php?option=com_content&view=article&id=9') ?>">Scarica la label iPie</a></p>
+	
 <form action="<?php echo JRoute::_('index.php?option='.CNL.'&layout=edit&id='.(int) $this->form->getValue($key_name)); ?>"
       class="form-validate" method="post" name="adminForm" id="draft-form"
       enctype="multipart/form-data"
@@ -190,19 +191,6 @@ function isValid($field, $errors) {
                     <td><?php echo $field->input ?></td>
                 </tr>
 
-                <tr>
-                  <th>Fattori per cui l'azienda è considerata innovativa</th>
-                  <td>
-                    <?php if (count($this->factors)) : ?>
-                    <ul>
-                        <?php foreach($this->factors as $f) : ?>
-                        <li><?php echo $f->description ?></li>
-                        <?php endforeach; ?>
-                    </ul>      
-                    <?php endif; ?>
-                  </td>
-                </tr>
-                
                 <?php $field = $this->form->getField('tos') ?>
                 <tr <?php echo isValid('tos', $errors) ? '' : 'class="errore"' ?>>
                     <td colspan="2" class="destra"> 
@@ -221,9 +209,10 @@ function isValid($field, $errors) {
                 <tr>
                   <td colspan="2" class="destra">
                     <input type="reset" class="button" name="cancella" id="cancella" value="cancella" />  
-                    <input type="submit" class="validate button" onclick="IPIE.submitDraft('draft.save');return false;"
+                    <input type="submit" class="validate" id="submit" value="" style="display:none" />
+                    <input type="submit" class="button" onclick="IPIE.saveDraft();return false;"
                         value="<?php echo JText::_('salva bozza');?>" />
-                    <input type="submit" class="button" onclick="IPIE.submitDraft('draft.sendForApprovation');return false;"
+                    <input type="submit" class="button" onclick="IPIE.sendDraft();return false;"
                         value="<?php echo JText::_('invia');?>" />
                     
                     <?php $field = $this->form->getField('draft_id') ?>
@@ -286,13 +275,12 @@ function isValid($field, $errors) {
     
     
     var IPIE = IPIE || {};
-    IPIE.submitDraft = function(task) {
-    	if (task == 'draft.sendForApprovation') {
-        	if (!new FormValidator('draft-form').validate()) {
-        		return false;
-        	}
-        }
-        jQuery('#draft-task').val(task);
-        jQuery('#draft-form').submit();
+    IPIE.saveDraft = function(task) {
+        jQuery('input[name=task]').val('draft.save');
+        jQuery('form input[type=submit]#submit').click();
+    }
+    IPIE.sendDraft = function(task) {
+        jQuery('input[name=task]').val('draft.sendForApprovation');
+        jQuery('form input[type=submit]#submit').click();
     }
 </script>

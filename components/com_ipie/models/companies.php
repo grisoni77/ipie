@@ -15,12 +15,22 @@ class IPieSiteModelCompanies extends JModelList
     public function __construct($config = array())
     {
         // field dove cercare
-        $this->searchInFields = array('c.name');
+        $this->searchInFields = array('ci.name', 'p.name', 'ftmp.factors');
+        $lang = JFactory::getLanguage();
+        $locale = $lang->getLocale();
+        if ('it' == $locale[4]) {
+        	$this->searchInFields[] = 'c.area_eccellenza_it';
+        	$this->searchInFields[] = 'c.collaborazioni_it';
+        } else {
+        	$this->searchInFields[] = 'c.area_eccellenza_en';
+        	$this->searchInFields[] = 'c.collaborazioni_en';
+        }
 
         // add ordering field white list
-        $config['filter_fields'] = array('c.name', 'c.published'
-            , 'ci.name', 'p.name'
+        $config['filter_fields'] = array(
+            'ci.name', 'p.name'
         );
+        
 
         parent::__construct($config);
     }
@@ -44,6 +54,7 @@ class IPieSiteModelCompanies extends JModelList
         $query
                 ->select('DISTINCT c.company_id AS id, c.company_id, c.name')
                 ->select('c.published, ci.name as city, c.address, p.name as province')
+                ->select('c.lat, c.lng')
                 ->from('#__ipie_company c')
                 ->join('INNER', '#__ipie_city ci ON (ci.city_id=c.city_id)')
                 ->join('INNER', '#__ipie_province p ON (ci.province_id=p.province_id)')
@@ -53,7 +64,7 @@ class IPieSiteModelCompanies extends JModelList
 
         // add query conditions
         $this->buildQueryConditions($query);
-
+	//echo $db->replacePrefix($query);
         return $query;
     }
 
@@ -68,16 +79,21 @@ class IPieSiteModelCompanies extends JModelList
             $regex = str_replace(' ', '|', $this->getState('filter.search'));
             if (!empty($regex))
             {
+                $db = JFactory::getDbo();
+            	$q2 = $db->getQuery(true);
+                $q2
+                ->select('fc.company_id')
+                ->select('GROUP_CONCAT(f.description ORDER BY f.description ASC SEPARATOR \' \') as factors ')
+                ->from('#__ipie_factor_company fc')
+                ->join('LEFT', '#__ipie_factor f ON (fc.factor_id=f.factor_id)')
+                ->group('fc.company_id');
+                
+                $query->join('LEFT', sprintf('(%s) ftmp ON (c.company_id=ftmp.company_id)', $q2));
+                
                 $regex = ' REGEXP ' . $db->quote($regex);
                 $query->where('(' . implode($regex . ' OR ', $this->searchInFields) . $regex . ')');
+                //$query->where('( ftmp.factors ' . $regex . ')');
             }
-        }
-
-        // Filter
-        $val = $this->getState('filter.name');
-        if (!empty($val))
-        {
-            $query->where('(c.name LIKE \'%' . $val . '%\')');
         }
 
         // Filter
@@ -121,7 +137,7 @@ class IPieSiteModelCompanies extends JModelList
         $app = JFactory::getApplication();
 
         // Load the filter state.
-        $search = $this->getStateFromRequest('filter_search', '', 'string');
+        $search = $this->getStateFromRequest('keywords', '', 'string');
         $this->setState('filter.search', preg_replace('/\s+/', ' ', $search));
         
         $name = $this->getStateFromRequest('filter_name', '', 'string');

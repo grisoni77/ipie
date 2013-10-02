@@ -69,12 +69,12 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
             <?php JText::printf('fax.: %s', $item->fax) ?><br />
             <?php endif; ?>
             <?php if (!empty($item->email)) : ?>
-            <?php echo JText::_('e-mail.:') ?>: 
+            <?php echo JText::_('e-mail.:') ?>
             <?php echo JHtml::_('email.cloak', $item->email) ?>
             <br />
             <?php endif; ?>
             <?php if (!empty($item->web)) : ?>
-            <?php echo JText::_('web:') ?> :
+            <?php echo JText::_('web:') ?>
             <a href="<?php echo $item->web ?>" class="blank" title="<?php echo JText::_('Sito esterno') ?>">
                 <?php echo $item->web ?>
             </a>
@@ -88,7 +88,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
     </div>
 
     <div class="blocco">
-                <a href="<?php echo JRoute::_('index.php?option=com_content&view=article&id=9') ?>">Scarica label</a>
+                
         <ul class="bollini">
             <li>
                 <img src="/images/bollino_ipie.gif" alt="<?php echo JText::_('Bollino iPie') ?>" />

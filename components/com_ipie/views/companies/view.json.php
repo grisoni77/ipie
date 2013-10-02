@@ -30,6 +30,8 @@ class IPieViewCompanies extends JView
                 'address' => sprintf('%s %s %s %s', 
                     $item->address, $item->cap, $item->city, $item->province),
                 'web' => $item->web,
+                'lat' => $item->lat,
+                'lng' => $item->lng,
             );
         }
         

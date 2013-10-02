@@ -24,11 +24,11 @@ class IPieViewCompany extends JView
         $lang = JFactory::getLanguage();
         $locale = $lang->getLocale();
         if ('it' == $locale[4]) {
-            $this->area_eccellenza = $this->item->area_eccellenza_it;
-            $this->collaborazioni = $this->item->collaborazioni_it;
+            $item->area_eccellenza = $item->area_eccellenza_it;
+            $item->collaborazioni = $item->collaborazioni_it;
         } else {
-            $this->area_eccellenza = $this->item->area_eccellenza_en;
-            $this->collaborazioni = $this->item->collaborazioni_en;
+            $item->area_eccellenza = $item->area_eccellenza_en;
+            $item->collaborazioni = $item->collaborazioni_en;
         }
         include 'tmpl/pdf.php';
         //echo 'PDF';

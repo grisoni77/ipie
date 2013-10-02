@@ -32,7 +32,7 @@ function initialize() {
         method: 'get',
         dataType: 'json',
         success: function(data) {
-             jQuery.each(data, function(idx, item) {
+             /*jQuery.each(data, function(idx, item) {
                 //codeAddress(item);
                 //console.log(item);
                 codeAddress(item);
@@ -41,7 +41,11 @@ function initialize() {
              jQuery.each(markers, function(m, idx) {
                 bounds.extend(m.getPosition());
              });
-             map.fitBounds(bounds);
+             */
+             jQuery.each(data, function(idx, item) {
+                 addCompanyMarker(item);
+             });
+             //map.fitBounds(bounds);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
@@ -49,10 +53,64 @@ function initialize() {
     }
     );
 
+    // aggiungi circle su torino
+    var torino = new google.maps.LatLng(45.070982, 7.685676);
+    var circ = new google.maps.Circle({
+            center:torino,
+            clickable:true,
+            fillColor:'#FF0000',
+            fillOpacity:0.35, 
+            map:map,
+            radius:20000,
+            strokeColor:'#FF0000',
+            strokeWeight:2,
+            strokeOpacity:0.5});
 
+    //create info window
+    var infoWindow= new google.maps.InfoWindow({
+        content: '<p>Le imprese innovative della Provincia di Torino sono visibili sul portale \
+        <a href="http://www.innovativetorino.it" target="_blank">iTo</a></p>'
+    });
+
+    //add a click event to the circle
+    google.maps.event.addListener(circ, 'click', function(ev){
+        //call  the infoWindow
+        infoWindow.setPosition(circ.getCenter());
+        infoWindow.open(map);
+    }); 
 }
 
 var markers = [];
+
+function addCompanyMarker(item) {
+    // init infowindow
+    var contentString = '<div id="info_content">' +
+            '<strong>' + item.name + '</strong>' +
+            '<div id="bodyContent">' +
+            '<p>' + item.address + '</p>' +
+            '<p><a href="' + item.web + '">'+Joomla.JText._('SITO WEB')+'</a></p>' +
+            '</div>' +
+            '</div>';
+
+    var infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
+
+    // init marker
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(item.lat, item.lng),
+        map: map,
+        title: item.name
+    });
+
+    markers.push(marker);
+
+    google.maps.event.addListener(marker, 'click', function() {
+        //map.setZoom(12);
+        infowindow.open(map, marker);
+    });
+    
+}
 
 function codeAddress(item) {
     var address = item.address + ' Piemonte Italia';

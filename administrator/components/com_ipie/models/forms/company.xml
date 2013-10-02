@@ -176,6 +176,10 @@
             description="Area di eccellenza in lingua italiana. Max 1500 caratteri"
             required="true"
             maxlength="1500"
+            validate="maxlength"
+            message="Inserire un valore valido per area_eccellenza_it (max 1500 caratteri)"
+            cols="80"
+            rows="5"
         />
         
         <field 
@@ -186,6 +190,10 @@
             description="Area di eccellenza in lingua inglese. Max 1500 caratteri"
             required="true"
             maxlength="1500"
+            validate="maxlength"
+            message="Inserire un valore valido per area_eccellenza_en (max 1500 caratteri)"
+            cols="80"
+            rows="5"
         />
         
         <field 
@@ -196,6 +204,10 @@
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
             maxlength="500"
+            validate="maxlength"
+            message="Inserire un valore valido per collaborazioni_it (max 500 caratteri)"
+            cols="80"
+            rows="5"
         />
         
         <field 
@@ -206,6 +218,10 @@
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
             maxlength="500"
+            validate="maxlength"
+            message="Inserire un valore valido per collaborazioni_en (max 500 caratteri)"
+            cols="80"
+            rows="5"
         />
         
     </fieldset>

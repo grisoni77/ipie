@@ -273,20 +273,36 @@ foreach ($item->factors as $f)
 // ---------------------------------------------------------
 
 // Area di eccellenza
+if (!empty($item->area_eccellenza)) :
 $pdf->setY($pdf->GetY()+5);
 $pdf->SetFont($fontname, 'B', $textsize, '', true);
 $pdf->SetTextColor($verde1, $verde2, $verde3);
-//$pdf->Cell(0, 0, ('FATTORI PER CUI L’AZIENDA &Egrave; CONSIDERATA INNOVATIVA'), 0, 1, 'L', false);
-$text = 'AREA DI ECCELLENZA';
+$text = JText::_('AREA DI ECCELLENZA');
 $pdf->headingLine($text);
 // testo
 $pdf->setY($pdf->GetY()+2);
 $pdf->SetFont($fontname, '', $textsize, '', true);
 $pdf->SetTextColor(0,0,0);
-//$pdf->MultiCell($lineW, 7, $firm->{'firm_aree_eccellenza'.$lang}, 0, 'L', 0, 0, '', '', true);
-$pdf->writeHTMLCell($lineW, '', $pdf->GetX(), '', $area_eccellenza.'<br>', 0, 0, 0, true, 'L', true);
+$pdf->writeHTMLCell($lineW, '', $pdf->GetX(), '', $item->area_eccellenza.'<br>', 0, 0, 0, true, 'L', true);
 $pdf->Ln();
+endif;
 
+// ---------------------------------------------------------
+
+// Collaborazioni
+if (!empty($item->collaborazioni)) :
+$pdf->setY($pdf->GetY()+5);
+$pdf->SetFont($fontname, 'B', $textsize, '', true);
+$pdf->SetTextColor($verde1, $verde2, $verde3);
+$text = JText::_('COLLABORAZIONI RICERCATE');
+$pdf->headingLine($text);
+// testo
+$pdf->setY($pdf->GetY()+2);
+$pdf->SetFont($fontname, '', $textsize, '', true);
+$pdf->SetTextColor(0,0,0);
+$pdf->writeHTMLCell($lineW, '', $pdf->GetX(), '', $item->collaborazioni.'<br>', 0, 0, 0, true, 'L', true);
+$pdf->Ln();
+endif;
 
 // ---------------------------------------------------------
 

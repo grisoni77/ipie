@@ -182,6 +182,7 @@
             label="Area di eccellenza (in lingua italiana)"
             description="Area di eccellenza in lingua italiana. Max 1500 caratteri"
             required="true"
+            validate="maxlength"
             maxlength="1500"
             message="area_eccellenza_it::inserire area di eccellenza (IT)"
             cols="80"
@@ -195,6 +196,7 @@
             label="Area di eccellenza (in lingua inglese)"
             description="Area di eccellenza in lingua inglese. Max 1500 caratteri"
             required="true"
+            validate="maxlength"
             maxlength="1500"
             message="area_eccellenza_en::inserire area di eccellenza (EN)"
             cols="80"
@@ -208,17 +210,23 @@
             label="Collaborazioni ricercate (in lingua italiana)"
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
+            validate="maxlength"
             maxlength="500"
+            cols="80"
+            rows="5"
         />
         
         <field 
             name="collaborazioni_en" 
             type="textarea"
             default=""
-            label="Collaborazioni ricercate (in lingua inglese"
+            label="Collaborazioni ricercate (in lingua inglese)"
             description="Collaborazioni ricercate. Max 500 caratteri"
             required="false"
+            validate="maxlength"
             maxlength="500"
+            cols="80"
+            rows="5"
         />
         
         <field

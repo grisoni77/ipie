@@ -61,7 +61,7 @@ class IPieControllerRegistration extends IPieControllerForm
                 'email' => $post['email'],
                 'username' => $post['username'],
                 'password' => $post['password'],
-                'login_link' => JURI::root().JRoute::_('index.php?option=com_users&view=login'),
+                'login_link' => JURI::root().('login.html'),
             ));
 
             $this->setRedirect('index.php?option=com_ipie&view=registrations', 'Registrazione approvata correttamente');

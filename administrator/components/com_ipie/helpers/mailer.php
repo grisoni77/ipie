@@ -37,6 +37,16 @@ class IPieHelperMailer
         }
     }
     
+    public function getAdminProvincia($data)
+    {
+        $params = JComponentHelper::getParams('com_ipie');
+        // cerca admin provincia
+        $name_param = 'admin_mail_province_'.$data['province_id'];
+        $admin_province_mail = $params->def($name_param, null);
+        $admin_province_mail = filter_var($admin_province_mail, FILTER_VALIDATE_EMAIL);
+        return $admin_province_mail;
+    }
+    
     /**
      * Usato per mandare email di notifica dopo richiesta registrazione
      * 
@@ -46,13 +56,18 @@ class IPieHelperMailer
     {
         $app = JFactory::getApplication();
         $params = JComponentHelper::getParams('com_ipie');
-
+        // cerca admin provincia
+        $admin_province_mail = $this->getAdminProvincia($data);
+        
         $body = self::parseTemplate('notifySystemOnRegistration', $data);
         //echo $body;
 
         $mail = self::getMailer();
         $mail->IsHTML();
         $mail->addRecipient($params->get('system_email'));
+        if ($admin_province_mail) {
+            $mail->addRecipient($admin_province_mail);
+        }
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSubject(JText::_('Nuova richiesta di registrazione al sito Imprese Innovative Piemonte'));
@@ -123,13 +138,18 @@ class IPieHelperMailer
     {
         $app = JFactory::getApplication();
         $params = JComponentHelper::getParams('com_ipie');
-
+        // cerca admin provincia
+        $admin_province_mail = $this->getAdminProvincia($data);
+        
         $body = self::parseTemplate('notifySystemOnDraftSubmission', $data);
         //echo $body;
 
         $mail = self::getMailer();
         $mail->IsHTML();
         $mail->addRecipient($params->get('system_email'));
+        if ($admin_province_mail) {
+            $mail->addRecipient($admin_province_mail);
+        }
         $mail->addReplyTo(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSender(array($params->get('sender_email'), $params->get('sender_name')));
         $mail->setSubject(JText::_('Nuova bozza in attesa di approvazione'));

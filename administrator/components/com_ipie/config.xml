@@ -30,6 +30,48 @@
                 description="Email usata per la ricezione delle notifiche"
                 />
                 
+            <field name="admin_mail_province_1"
+                type="text"
+                label="Email Admin Alessandria"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_2"
+                type="text"
+                label="Email Admin Asti"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_3"
+                type="text"
+                label="Email Admin Biella"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_4"
+                type="text"
+                label="Email Admin Cuneo"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_5"
+                type="text"
+                label="Email Admin Novara"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_7"
+                type="text"
+                label="Email Admin Verbania"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
+            <field name="admin_mail_province_8"
+                type="text"
+                label="Email Admin Vercelli"
+                description="Email usata per la ricezione delle notifiche al responsabile provinciale"
+                />
+                
 	</fieldset>
 
 	<fieldset name="permissions"

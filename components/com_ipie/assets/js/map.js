@@ -68,16 +68,32 @@ function initialize() {
 
     //create info window
     var infoWindow= new google.maps.InfoWindow({
-        content: '<p>Le imprese innovative della Provincia di Torino sono visibili sul portale \
-        <a href="http://www.innovativetorino.it" target="_blank">iTo</a></p>'
+        content: '<p>'+Joomla.JText._('Le imprese innovative della Provincia di Torino sono visibili sul portale')
+        +'<a href="http://www.innovativetorino.it" target="_blank">iTo</a></p>'
     });
+    infoWindow.setPosition(circ.getCenter());
+    infoWindow.openState = false;
 
     //add a click event to the circle
     google.maps.event.addListener(circ, 'click', function(ev){
+    	infoWindow.openState = !infoWindow.openState;
         //call  the infoWindow
-        infoWindow.setPosition(circ.getCenter());
+        if (infoWindow.openState) { 
+        	infoWindow.open(map);
+        } else {
+        	infoWindow.close();
+        }
+    });
+    /*
+    google.maps.event.addListener(circ, 'mouseover', function(ev){
+        //call  the infoWindow
         infoWindow.open(map);
     }); 
+    google.maps.event.addListener(circ, 'mouseout', function(ev){
+        //call  the infoWindow
+        infoWindow.close();
+    });
+    */ 
 }
 
 var markers = [];
@@ -88,7 +104,7 @@ function addCompanyMarker(item) {
             '<strong>' + item.name + '</strong>' +
             '<div id="bodyContent">' +
             '<p>' + item.address + '</p>' +
-            '<p><a href="' + item.web + '">'+Joomla.JText._('SITO WEB')+'</a></p>' +
+            '<p><a href="' + item.web + '" target="_blank">'+Joomla.JText._('SITO WEB')+'</a></p>' +
             '</div>' +
             '</div>';
 
@@ -124,7 +140,7 @@ function codeAddress(item) {
                     '<strong>' + item.name + '</strong>' +
                     '<div id="bodyContent">' +
                     '<p>' + item.address + '</p>' +
-                    '<p><a href="' + item.web + '">Sito web</a></p>' +
+                    '<p><a href="' + item.web + '" target="_blank">Sito web</a></p>' +
                     '</div>' +
                     '</div>';
 

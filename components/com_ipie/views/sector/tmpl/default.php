@@ -6,7 +6,7 @@ $sector = $this->sector;
 
 // title pagina
 $doc = JFactory::getDocument();
-$doc->setTitle(JText::sprintf('Aziende del settore %s', $sector['name']));
+$doc->setTitle(JText::sprintf('Aziende del settore %s', JText::_($sector['name'])));
 // Briciole di pane
 $pathway = JFactory::getApplication()->getPathway();
 $pathway->addItem(JText::sprintf('Settore %s', $sector['name']));
@@ -22,7 +22,7 @@ $email_link = JUri::root().'index.php?option=com_mailto&tmpl=component&link=' . 
 
 ?>
 
-<h2><?php echo $this->sector['name']?></h2>
+<h2><?php echo JText::_($sector['name'])?></h2>
 
 <?php if (0 == JRequest::getInt('print')) : ?>
  <ul class="actions">
@@ -49,7 +49,7 @@ $email_link = JUri::root().'index.php?option=com_mailto&tmpl=component&link=' . 
 ?>
 <ul class="arancio">
     <li>
-        <a href="<?php echo JRoute::_($link) ?>" title="Vedi dettaglio">
+        <a href="<?php echo JRoute::_($link) ?>" title="<?php echo JText::_('Vedi dettaglio'); ?>">
             <?php echo $item->name ?>
         </a>
     </li>

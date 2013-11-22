@@ -9,6 +9,9 @@ require_once JPATH_SITE.'/components/com_ipie/loader.php';
 require_once (dirname(__FILE__)) . '/helper.php';
 require_once (dirname(__FILE__)) . '/../mod_ipie_sectors/helper.php';
 
+$language = JFactory::getLanguage();
+$language->load('com_ipie', JPATH_ROOT, null, true);
+
 $prov = modIPieSearchHelper::getProvinces($params);
 $sectors = modIPieSectorsHelper::getSectors($params);
 // get module state

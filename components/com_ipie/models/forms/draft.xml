@@ -173,6 +173,7 @@
             type="fesectors"
             label="Settori"
             description="Settori"
+            required="true"
         />
         
         <field 

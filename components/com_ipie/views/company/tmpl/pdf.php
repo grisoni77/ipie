@@ -1,4 +1,5 @@
 <?php
+
 // english language ?
 $lang = '_it';//$lingua->getBackwardLang() == 'italian' ? '' : '_eng';
 // altri dati

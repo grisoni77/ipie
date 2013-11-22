@@ -162,6 +162,7 @@
             type="sectors"
             label="Settori"
             description="Settori"
+            required="true"
         />
         
         <field 

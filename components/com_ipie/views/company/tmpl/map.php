@@ -1,6 +1,8 @@
 <?php 
 $doc = JFactory::getDocument();
 $doc->addScript('http://maps.google.com/maps/api/js?sensor=false');
+
+
 ?>
 
 <div id="map_canvas"></div>
@@ -53,7 +55,7 @@ function codeAddress(item) {
                     '<strong>' + item.name + '</strong>' +
                     '<div id="bodyContent">' +
                     '<p>' + item.address + '</p>' +
-                    (item.web != '' ? '<p><a href="' + item.web + '">Sito web</a></p>' : '') +
+                    (item.web != '' ? '<p><a target="_blank" href="' + item.web + '">Sito web</a></p>' : '') +
                     '</div>' +
                     '</div>';
 

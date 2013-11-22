@@ -1,6 +1,6 @@
 <?php 
-$doc = JFactory::getDocument();
-$doc->addScript(JURI::root().'/modules/mod_ipie_search/assets/jquery.placeholder.js');
+//$doc = JFactory::getDocument();
+//$doc->addScript(JURI::root().'/modules/mod_ipie_search/assets/jquery.placeholder.js');
 
 $action = 'index.php';//JRoute::_('index.php');
 
@@ -49,8 +49,35 @@ $action = 'index.php';//JRoute::_('index.php');
     var IPIE = IPIE || {};
     IPIE.resetForm = function() {
         jQuery('#nomeaz').val('');
-        jQuery('#keywords').val('');
+        jQuery('#chiave').val('');
         jQuery('#sector_id').val(0);
         jQuery('#prov').val(0);
     };
+if (!Modernizr.input.placeholder) {
+	var ph_chiave = '-- <?php echo JText::_('parola chiave') ?> --';
+	var ph_nomeaz = '-- <?php echo JText::_('nome azienda') ?> --';
+
+//	$('form1_submit').setStyle('display','none');
+	if ($('chiave').value=='') { $('chiave').value = ph_chiave }
+	if ($('nomeaz').value=='') { $('nomeaz').value = ph_nomeaz }
+
+	$$('#form1 input[type=text]')
+	.addEvent('focus', function() {
+		this.value = '';
+	})
+	.addEvent('blur', function() {
+		if (this.value == '') {
+			if (this.id=='chiave') this.value = ph_chiave;
+			if (this.id=='nomeaz') this.value = ph_nomeaz;
+		}
+	});
+	$('form1').addEvent('submit', function() {
+		if ($('chiave').value==ph_chiave) { $('chiave').value = '' }
+		if ($('nomeaz').value==ph_nomeaz) { $('nomeaz').value = '' }
+		//$('form1').submit();
+	});
+}
 </script>
+
+
+

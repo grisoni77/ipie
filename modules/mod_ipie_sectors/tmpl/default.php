@@ -8,7 +8,7 @@
     <li id="s<?php echo $s->sector_id ?>"
         <?php if ($filter_sector == $s->sector_id ) : ?>class="active"<?php endif; ?>
         >
-        <a href="<?php echo JRoute::_($link) ?>" title="" />
+        <a href="<?php echo JRoute::_($link) ?>" title="<?php echo JText::_($s->name) ?>" />
             <span><?php echo JText::_($s->name) ?></span>
         </a>
     </li>

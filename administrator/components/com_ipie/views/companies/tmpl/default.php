@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Restricted Access');
 // load tooltip behavior
 JHtml::_('behavior.tooltip');
 ?>
-<form action="<?php echo JRoute::_('index.php?option='.CNL); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option='.CNL.'&view=companies'); ?>" method="post" name="adminForm" id="adminForm">
     
     <fieldset id="suspend-fieldset" class="adminform">
         <legend><?php echo JText::_('Inserisci una motivazione'); ?></legend>
@@ -59,4 +59,3 @@ JHtml::_('behavior.tooltip');
     };
     Suspend.hide();
 </script>
-

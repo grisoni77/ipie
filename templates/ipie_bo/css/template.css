@@ -184,13 +184,13 @@ legend {
 	font-size: 1.1em;
 }
 
-#body_outer input.button {
+#body_outer input.button, #body_outer button {
   background-color: #3D3D3D;
   color: #fff;
   border: 1px solid #c2c2c2;
   padding: 6px 10px;;
 }
-#body_outer input.button:hover {
+#body_outer input.button:hover, #body_outer button:hover {
 	background-color: #636363;
 }
 
@@ -255,4 +255,15 @@ font-weight: bold;
 }
 
 /* tags */
+
+div.tip-wrap {
+	background: #fff;
+	color: black;
+	text-align: left;
+	padding: 1em;
+	  border: 1px solid;
+  border-color: #acacac #636363 #636363 #bababa ;
+  max-width: 500px;	
+}
+div.tip-wrap .tip-title {	font-weight: bold; }
 

@@ -36,6 +36,14 @@ class IPieSiteModelCompany extends IPieModelCompany
         $item->sectors = $this->getSectors();
         $item->factors = $this->getFactors();
         
+        // aggiunge http scheme
+	$web = new JUri($item->web);
+	$scheme = $web->getScheme();
+	if (empty($scheme)) {
+		$web->setScheme('http');
+		$item->web = $web->toString();
+	}
+
         return $item;
     }
 

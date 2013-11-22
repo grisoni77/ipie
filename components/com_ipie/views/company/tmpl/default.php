@@ -14,7 +14,6 @@ require_once JPATH_SITE . '/components/com_mailto/helpers/mailto.php';
 $link = JURI::root() . JRoute::_(IPieHelperRoute::companyLink($item->company_id, $item->name), false);
 $email = 'index.php?option=com_mailto&tmpl=component&link=' . MailToHelper::addLink($link);
 
-
 // title pagina
 $doc = JFactory::getDocument();
 $doc->setTitle(JText::sprintf('Scheda Azienda %s', $item->name));
@@ -57,9 +56,9 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
             
             <?php echo $item->address ?> - <?php echo $item->cap ?> <?php echo $item->city ?> (<?php echo strtoupper($item->province_code) ?>)                        
             <a href="index.php?option=com_ipie&view=company&layout=map&tmpl=component&id=<?php echo $item->company_id ?>" 
-                                                                        class="modal" title="Apri mappa in modale"
+                                                                        class="modal" title="<?php echo JText::_('Apri mappa in modale'); ?>"
                                                                         rel="{handler: 'iframe', size: {x: 800, y: 500}}" >
-                <img class="mappa" src="/images/google.gif" alt="Apri mappa in modale" width="26" height="27" />
+                <img class="mappa" src="/images/google.gif" alt="<?php echo JText::_('Apri mappa in modale'); ?>" width="26" height="27" />
             </a>
             <br />
             <?php if (!empty($item->tel)) : ?>
@@ -100,7 +99,7 @@ $pathway->addItem(JText::sprintf('Scheda %s', $item->name));
 
         <ul>
             <?php foreach ($item->factors as $f) : ?>
-            <li><?php echo $f->description ?></li>
+            <li><?php echo JText::_($f->description) ?></li>
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>

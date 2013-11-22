@@ -36,6 +36,7 @@ $app = JFactory::getApplication();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 	<head>
+
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
       <script type="text/javascript">jQuery.noConflict()</script>
 		<!-- The following JDOC Head tag loads all the header and meta information from your site config and content. -->
@@ -55,7 +56,8 @@ $app = JFactory::getApplication();
 	
       	<!-- The following line loads the template JavaScript file located in the template folder. It's blank by default. -->
 		<script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/template.js"></script>
-        
+
+     
         <script type="text/javascript">
 //<![CDATA[
 window.onload=function() {
@@ -70,6 +72,17 @@ l[i].onclick=function(){window.open(this.href);return(false)};
 }
 }
 //]]>
+</script>
+<script src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/js/modernizr.custom.99135.js" type="text/javascript"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-45822591-1', 'impreseinnovativepiemonte.it');
+  ga('send', 'pageview');
+
 </script>
 	</head>
 	<body id="mainbody" oncontextmenu="return false;">

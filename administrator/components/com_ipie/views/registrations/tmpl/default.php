@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Restricted Access');
 // load tooltip behavior
 JHtml::_('behavior.tooltip');
 ?>
-<form action="<?php echo JRoute::_('index.php?option='.CNL); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option='.CNL.'&view=registrations'); ?>" method="post" name="adminForm" id="adminForm">
     <thead><?php echo $this->loadTemplate('filters'); ?></thead>
     <table class="adminlist">
         <thead><?php echo $this->loadTemplate('head'); ?></thead>

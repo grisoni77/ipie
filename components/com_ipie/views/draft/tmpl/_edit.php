@@ -28,7 +28,7 @@ function isValid($field, $errors) {
 <h2>Scheda azienda</h2>
 
 	<p>La <strong>compilazione</strong> dei campi contrassegnati con il simbolo <strong>*</strong> è <strong>obbligatoria</strong> così come l’<strong>accettazione dell’informativa sul trattamento dei dati personali</strong>.</p>
-	<p>Per eventuale assistenza in fase di compilazione, contattare il numero <strong>848.800.348</strong></p> 
+	<p>Per eventuale assistenza in fase di compilazione, contattare il numero <strong>800.488.003.48</strong></p> 
 	<p><a href="<?php echo JRoute::_('index.php?option=com_content&view=article&id=9') ?>">Scarica la label iPie</a></p>
 	
 <form action="<?php echo JRoute::_('index.php?option='.CNL.'&layout=edit&id='.(int) $this->form->getValue($key_name)); ?>"

@@ -40,6 +40,24 @@ class IPieSiteModelCompanies extends JModelList
         return JRequest::getVar($request, $default, 'default', $type);
     }
 
+    public function getItems()
+    {
+    	$items = parent::getItems();
+    	foreach ($items as &$item) 
+    	{
+    		// aggiunge http scheme
+    		if (!empty($item->web)) {
+			$web = new JUri($item->web);
+			$scheme = $web->getScheme();	
+			if (empty($scheme)) {
+				$web->setScheme('http');
+				$item->web = $web->toString();
+			}
+	    	}
+	}
+    	return $items;
+    }
+    
     /**
      * Method to build an SQL query to load the list data.
      *
@@ -53,7 +71,7 @@ class IPieSiteModelCompanies extends JModelList
         // Select some fields
         $query
                 ->select('DISTINCT c.company_id AS id, c.company_id, c.name')
-                ->select('c.published, ci.name as city, c.address, p.name as province')
+                ->select('c.published, ci.name as city, c.address, p.name as province, c.web')
                 ->select('c.lat, c.lng')
                 ->from('#__ipie_company c')
                 ->join('INNER', '#__ipie_city ci ON (ci.city_id=c.city_id)')

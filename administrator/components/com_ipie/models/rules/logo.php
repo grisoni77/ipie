@@ -24,13 +24,14 @@ class JFormRuleLogo extends JFormRule {
      */
     public function test(&$element, $value, $group = null, &$input = null, &$form = null)
     {
+        //return true;
         // get input
         $jinput = JFactory::getApplication()->input;
         $files = $jinput->files->get('jform');
         //print_r($files);die();
         $file = $files['logo'];
         // get form db
-        $cl = $input->get('current_logo');
+        //$cl = $input->get('current_logo');
         // field required se non ce n'è già uno in db
 //        if (empty($file['name']) && empty($cl)) {
 //            return false;
